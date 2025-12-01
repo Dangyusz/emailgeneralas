@@ -14,8 +14,7 @@ abstract class BaseRepository implements RepositoryInterface
      */
     public function __construct(
         protected Model $model
-    ) {
-    }
+    ) {}
 
     /**
      * Get the model instance.
@@ -88,7 +87,7 @@ abstract class BaseRepository implements RepositoryInterface
     {
         $record = $this->find($id);
 
-        if (!$record) {
+        if (! $record) {
             return false;
         }
 
@@ -102,7 +101,7 @@ abstract class BaseRepository implements RepositoryInterface
     {
         $record = $this->find($id);
 
-        if (!$record) {
+        if (! $record) {
             return false;
         }
 

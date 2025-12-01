@@ -9,8 +9,7 @@ class HomeController extends Controller
 {
     public function __construct(
         private readonly UserServiceInterface $userService
-    ) {
-    }
+    ) {}
 
     /**
      * Display the home page with user statistics.

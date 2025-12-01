@@ -11,7 +11,7 @@ interface RepositoryInterface
     /**
      * Get all records.
      *
-     * @param array<string> $columns
+     * @param  array<string>  $columns
      * @return Collection<int, Model>
      */
     public function all(array $columns = ['*']): Collection;
@@ -19,8 +19,7 @@ interface RepositoryInterface
     /**
      * Get paginated records.
      *
-     * @param int $perPage
-     * @param array<string> $columns
+     * @param  array<string>  $columns
      * @return LengthAwarePaginator<Model>
      */
     public function paginate(int $perPage = 15, array $columns = ['*']): LengthAwarePaginator;
@@ -38,7 +37,7 @@ interface RepositoryInterface
     /**
      * Find records by a specific column value.
      *
-     * @param array<string> $columns
+     * @param  array<string>  $columns
      * @return Collection<int, Model>
      */
     public function findBy(string $column, mixed $value, array $columns = ['*']): Collection;
@@ -51,14 +50,14 @@ interface RepositoryInterface
     /**
      * Create a new record.
      *
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function create(array $data): Model;
 
     /**
      * Update a record by its primary key.
      *
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function update(int|string $id, array $data): bool;
 

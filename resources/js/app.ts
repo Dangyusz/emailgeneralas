@@ -1,4 +1,6 @@
 import '../css/app.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -25,5 +27,5 @@ createInertiaApp({
     },
 });
 
-// This will set light / dark mode on page load...
+
 initializeTheme();

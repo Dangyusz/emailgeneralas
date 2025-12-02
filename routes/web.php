@@ -1,15 +1,16 @@
 <?php
-use App\Models\User;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', function () {
-    // Fetch all users from the database
-    $users = User::all();
-
-    // Pass $users to the Blade view resources/views/users/index.blade.php
-    return view('users.index', ['users' => $users]);
+Route::get('/home', function () {
+    return view('home' );
 });
+
+Route::get('/show/{id}', [UserController::class, 'index']);
+
+

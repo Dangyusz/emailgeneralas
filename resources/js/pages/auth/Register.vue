@@ -9,14 +9,28 @@ import AuthBase from '@/layouts/AuthLayout.vue';
 import { login } from '@/routes';
 import { store } from '@/routes/register';
 import { Form, Head } from '@inertiajs/vue3';
-</script>
+import Navbar from '@/components/Navbar.vue';
 
+
+defineProps<{
+    status?: string;
+    canResetPassword: boolean;
+    canRegister: boolean;
+}>();
+</script>
 <template>
+
+        <Navbar :user="$page.props.auth?.user" />
     <AuthBase
-        title="Create an account"
-        description="Enter your details below to create your account"
+        title="Fiók létrehozása"
+        description="Adja meg adatait az alábbi mezőkben a fiók létrehozásához"
     >
-        <Head title="Register" />
+        <Head title="Regisztráció">
+ 
+
+
+    </Head>
+    
 
         <Form
             v-bind="store.form()"
@@ -26,7 +40,7 @@ import { Form, Head } from '@inertiajs/vue3';
         >
             <div class="grid gap-6">
                 <div class="grid gap-2">
-                    <Label for="name">Name</Label>
+                    <Label for="name">Név</Label>
                     <Input
                         id="name"
                         type="text"
@@ -35,13 +49,13 @@ import { Form, Head } from '@inertiajs/vue3';
                         :tabindex="1"
                         autocomplete="name"
                         name="name"
-                        placeholder="Full name"
+                        placeholder="Teljes név"
                     />
                     <InputError :message="errors.name" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="email">Email address</Label>
+                    <Label for="email">E-mail cím</Label>
                     <Input
                         id="email"
                         type="email"
@@ -55,7 +69,7 @@ import { Form, Head } from '@inertiajs/vue3';
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password">Password</Label>
+                    <Label for="password">Jelszó</Label>
                     <Input
                         id="password"
                         type="password"
@@ -63,13 +77,13 @@ import { Form, Head } from '@inertiajs/vue3';
                         :tabindex="3"
                         autocomplete="new-password"
                         name="password"
-                        placeholder="Password"
+                        placeholder="Jelszó"
                     />
                     <InputError :message="errors.password" />
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="password_confirmation">Confirm password</Label>
+                    <Label for="password_confirmation">Jelszó megerősítése</Label>
                     <Input
                         id="password_confirmation"
                         type="password"
@@ -77,7 +91,7 @@ import { Form, Head } from '@inertiajs/vue3';
                         :tabindex="4"
                         autocomplete="new-password"
                         name="password_confirmation"
-                        placeholder="Confirm password"
+                        placeholder="Jelszó megerősítése"
                     />
                     <InputError :message="errors.password_confirmation" />
                 </div>
@@ -90,19 +104,28 @@ import { Form, Head } from '@inertiajs/vue3';
                     data-test="register-user-button"
                 >
                     <Spinner v-if="processing" />
-                    Create account
+                    Fiók létrehozása
                 </Button>
             </div>
 
             <div class="text-center text-sm text-muted-foreground">
-                Already have an account?
+                Van már fiókod?
                 <TextLink
                     :href="login()"
                     class="underline underline-offset-4"
                     :tabindex="6"
-                    >Log in</TextLink
+                    >bejelentkezés</TextLink
                 >
             </div>
+        
         </Form>
     </AuthBase>
+
 </template>
+<style>
+*
+{
+    background-color:#F1F9FF;
+}
+
+</style>

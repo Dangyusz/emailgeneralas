@@ -45,4 +45,4 @@ Route::get('/forgot-password', function () {
 // Fiók
 Route::get('/account', function () {
     return view('account');
-})->middleware(['auth'])->name('account');
+})->name('account');

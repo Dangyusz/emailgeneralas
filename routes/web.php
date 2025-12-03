@@ -26,4 +26,8 @@ Route::get('/account-settings', function () {
     return Inertia::render('AccountSettings');
 })->name('account-settings');
 
+Route::get('/account', function () {
+    return Inertia::render('Account');
+})->name('account');
+
 require __DIR__.'/settings.php';

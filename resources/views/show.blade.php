@@ -1,4 +1,8 @@
 <?php
+  
+
+
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,10 +12,15 @@
     <title>Document</title>
 </head>
 <body>
-
+  
+    @foreach($recentuser as $user)
+    <p>{{ $user['id'] }}.{{ $user['name'] }} : {{ $user['email'] }}</p>
+@endforeach
   
     
-
+<h1>
+  
+</h1>
 
 </body>
 </html>

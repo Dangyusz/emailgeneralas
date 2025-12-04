@@ -6,6 +6,7 @@ use App\Contracts\UserServiceInterface;
 use Illuminate\Http\Request;
 use App\Services\UserService;
 use Illuminate\Contracts\View\View;
+use App\Models\User;
 
 
 class UserController extends Controller
@@ -17,9 +18,18 @@ class UserController extends Controller
     
     public function index($limit)
     {
-        $recentuser = $this->UserService->getRecentUsers($limit);
+        $recentusers = $this->UserService->getRecentUsers($limit);
+        $refindusers = [];
 
-        return view('show', [ 'recentuser' => $recentuser ]);
+        foreach ($recentusers as $users) {
+           $refindusers[] = [
+            "id" => $users['id'],
+            "name" => $users["name"],
+            "email" => $users["email"]
+           ];
+        }
+
+        return view('show', [ 'recentuser' => $recentusers ]);
     }
 
     /**

@@ -15,7 +15,6 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800" rel="stylesheet" />
 
-    {{-- Preload footer background --}}
     <link rel="preload" as="image" href="https://cdn.hexaverse.hu/erasmus6.webp">
 
     <style>
@@ -58,7 +57,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
-        /* Left side - Form */
         .form-section {
             flex: 1;
             padding: 3rem 2rem;
@@ -262,14 +260,12 @@
             text-align: center;
         }
 
-        /* Error messages */
         .error-message {
             color: #DC2626;
             font-size: 0.875rem;
             margin-top: 0.25rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .auth-container {
                 flex-direction: column;
@@ -315,9 +311,7 @@
 
         <main class="main-content">
             <div class="auth-container">
-                <!-- Left side - Form -->
                 <div class="form-section">
-                    <!-- Main form content -->
                     <div class="form-content-wrapper">
                         <div class="form-header">
                             <h1 class="form-title">Elfelejtett jelszó</h1>
@@ -359,7 +353,6 @@
                     </div>
                 </div>
 
-                <!-- Right side - Brand/Image Section -->
                 <div class="brand-section">
                     <div class="brand-content">
                         <img style="height: 225px" width="auto" src="https://cdn.hexaverse.hu/erasmus7.webp" alt="">

@@ -32,12 +32,7 @@
                 flex-direction: column;
             }
 
-            .main-content {
-                flex: 1;
-                max-width: 1200px;
-                margin: 0 auto;
-                width: 100%;
-            }
+            
 
             .page-title {
                 text-align: center;
@@ -47,14 +42,15 @@
                 color: #1e293b;
                 margin-bottom: 50px;
                 margin-top: 20px;
+                width: 100%;
             }
 
             .page-container {
                 text-align: center;
                 background-color: #E3EEF6;
-                max-width: 1000px;
-                padding-left: 200px;
-                padding-right: 200px;
+                padding-left: 11%;
+                padding-right: 11%;
+                max-width: 300% !important;
             }
 
 
@@ -75,7 +71,7 @@
                 position: relative;
                 margin-bottom: 20px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                width: 500px;
+                width: 100%;
                 height: 35px;
                 padding: 5px;
                 align-items: center;
@@ -179,7 +175,7 @@
                 max-width: 500px;
                 width: 200px;
                 height: 200px;
-                
+                transition-duration: 0.3s;
             }
 
             .btn:hover {
@@ -218,6 +214,7 @@
                 max-width: 210px;
                 max-height: 100px;
                 height: 35px;
+                transition-duration: 0.3s;
             }
 
             .btn-mentes:hover {

@@ -43,15 +43,18 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                padding-left: 3% !important;
+                max-width: 97%;
                 /*padding: 80px 24px;*/
             }
 
             .page-container {
                 text-align: center;
                 background-color: #E3EEF6;
-                max-width: 1000px;
-                padding-left: 200px;
-                padding-right: 200px;
+                max-width: 10000px;
+                padding-left: 22%;
+                padding-right: 22%;
+                width: 97%;
             }
 
             .page-title {
@@ -71,7 +74,7 @@
             }
 
             .data-container {
-                max-width: 1200px;
+                max-width: 88% !important;
                 margin: 0 auto;
                 display: flex;
                 justify-content: center;
@@ -82,16 +85,20 @@
             .data-card {
                 background: #F1F9FF;
                 border-radius: 16px;
-                padding: 40px 32px;
-                text-align: start;
+                padding: 40px 40px !important;
+                text-align: center;
                 flex: 1;
                 position: relative;
+                /*
                 padding-top: 50px;
                 margin-bottom: 20px;
+                */
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                width: 500px;
-                padding-left: 80px;
-                padding-right: 80px;
+                width: 200%;
+                /*
+                padding-left: 10%;
+                padding-right: 10%;
+                */
             }
 
             .data-badge {
@@ -131,7 +138,8 @@
                 border: 2px;
                 border-style: solid;
                 border-color: #1D174B;
-                transition-duration: 8ms;
+                transition-duration: 0.3s;
+                margin-top: 20px;
             }
 
             .btn:hover {
@@ -140,6 +148,11 @@
                 cursor: pointer;
                 border-style: solid ;
                 border-color: #1D174B;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
             }
 
             .account-img {
@@ -172,7 +185,7 @@
                     </div>
                     
                 </section>
-                <button class="btn">Adatok módosítása</button>
+                <button class="btn"><a href="account-settings">Adatok módosítása</a></button>
                 
             </div>
             </main>

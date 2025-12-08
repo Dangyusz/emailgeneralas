@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index($limit)
     {
         $recentusers = $this->UserService->getRecentUsers($limit);
-        $refindusers = [];
+        
 
         foreach ($recentusers as $users) {
            $refindusers[] = [

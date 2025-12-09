@@ -16,7 +16,7 @@ class UserController extends Controller
         private readonly UserServiceInterface $UserService
     ){}
     
-    public function index($limit)
+    public function recent($limit)
     {
         $recentusers = $this->UserService->getRecentUsers($limit);
         
@@ -30,6 +30,13 @@ class UserController extends Controller
         }
 
         return view('show', [ 'recentuser' => $recentusers ]);
+    }
+
+     public function find($id)
+    {
+        $user = $this->UserService->find($id);
+
+        return view('userbyid', ['user' => $user]);
     }
 
     /**

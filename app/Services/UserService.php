@@ -26,6 +26,10 @@ class UserService implements UserServiceInterface{
         return $this->UserRepository->all()->take(-$limit);
     }
 
+    public function find(int $id)  
+    {
+        return $this->UserRepository->find($id);
+    }
     
 }
 

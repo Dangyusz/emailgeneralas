@@ -52,8 +52,8 @@
                 text-align: center;
                 background-color: #E3EEF6;
                 max-width: 10000px;
-                padding-left: 22%;
-                padding-right: 22%;
+                padding-left: 11%;
+                padding-right: 11%;
                 width: 97%;
             }
 
@@ -74,7 +74,7 @@
             }
 
             .data-container {
-                max-width: 88% !important;
+                max-width: 50% !important;
                 margin: 0 auto;
                 display: flex;
                 justify-content: center;

@@ -1,11 +1,12 @@
-<?php
+<?php 
 
-namespace App\Contracts;
+namespace App\contracts;
+
 use Illuminate\Database\Eloquent\Collection;
 
-use App\Models\User;
 
-interface UserServiceInterface 
+interface UserServiceInterface
 {
-    public function getRecentUsers( int $limit = 5): Collection;
+    public function getRecentUser(int $limit = 5): collection;
 }
+

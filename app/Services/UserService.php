@@ -26,6 +26,11 @@ class UserService implements UserServiceInterface{
         return $this->UserRepository->all()->take(-$limit);
     }
 
+    public function getRecentUser(int $limit = 5): Collection
+    {
+        return $this->UserRepository->all()->take(-$limit);
+    }
+
     
 }
 

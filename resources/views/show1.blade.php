@@ -13,9 +13,11 @@
 </head>
 <body>
   
-  @foreach($recentuser as $user)
-    <p>{{ $user['id'] }}.{{ $user['name'] }} : {{ $user['email'] }}</p>
+    @foreach($company as $cs)
+    <p>{{ $cs['id'] }}.{{ $cs['name'] }}</p>
 @endforeach
+  
+    
 <h1>
   
 </h1>

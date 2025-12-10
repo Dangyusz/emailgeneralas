@@ -16,15 +16,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     {
         parent::__construct($model);
     }
-    public function create($data){
-        $data->name->input('name');
-        $data->email->input('email');
-        $data->password->input('password');
-        $data->piclink->input('piclink');
-
-        DB::table('users')->insert($data);
-
-    }
     public function FindByEmail($data): User
     {
         return $this->model->where('email', $data)->firstOrFail();

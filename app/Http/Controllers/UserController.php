@@ -11,7 +11,7 @@ use App\Http\Controllers\Input;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-
+use app\Repositories\UserRepository;
 
 
 
@@ -19,7 +19,8 @@ class UserController extends Controller
 {
 
     public function __construct(
-        private readonly UserServiceInterface $UserService
+        private readonly UserServiceInterface $UserService,
+        private readonly UserRepository $userRepository
     ){}
     
     public function recent($limit)
@@ -58,17 +59,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $name = $request->input('name');
-        $piclink = $request->input('piclink');
-        $email = $request->input('email');
-        $password = $request->input('password');
+        $userarray = [
+            'c_name' -> $request -> input('c_name'),
+            'name' -> $request->input('name'),
+            'email'-> $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'piclink' -> $request->input('piclink'), 
+            'tell' -> $request -> input('tell'),
+            'job_title' -> $request -> input('job_title')
+        ];
 
-        DB::table('users')->insert([
-            'name' => $name,
-            'email'=> $email,
-            'password'=> Hash::make($password),
-            'piclink' => $piclink
-        ]);
+        $this->userRepository->create($userarray);
+        
     }
 
     /**

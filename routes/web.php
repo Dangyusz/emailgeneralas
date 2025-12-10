@@ -18,3 +18,4 @@ Route::get('/show1/{limit}', [CompanyController::class, 'index']);
 
 Route::get('/userbyid/{id}', [UserController::class, 'find']);
 
+Route::post('/store', [UserController::class,'store']);

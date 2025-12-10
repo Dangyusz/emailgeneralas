@@ -25,8 +25,10 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-           Schema::dropIfExists('users');
-           
+           $table->dropColumn('tell');
+           $table->dropColumn('c_name');
+           $table->dropColumn('job_title');
+
         });
     }
 };

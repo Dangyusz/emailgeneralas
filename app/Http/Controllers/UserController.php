@@ -44,7 +44,7 @@ class UserController extends Controller
 
     
 
-        $user -> company_name = $this->companyRepo->getCompanyNameByUserId($id);
+        //$user -> company_name = $this->companyRepo->getCompanyNameByUserId($id);
 
        
 

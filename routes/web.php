@@ -1,6 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompanyController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/show/{limit}', [UserController::class, 'recent']);
+
+Route::get('/show1/{limit}', [CompanyController::class, 'index']);
+
+Route::get('/userbyid/{id}', [UserController::class, 'find']);
+
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
+
+Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
 
 // Főoldal
 Route::get('/', function () {
@@ -46,3 +62,4 @@ Route::get('/forgot-password', function () {
 Route::get('/account', function () {
     return view('account');
 })->name('account');
+

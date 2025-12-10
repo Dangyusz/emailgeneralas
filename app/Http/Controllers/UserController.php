@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use App\Services\UserService;
 use Illuminate\Contracts\View\View;
 use App\Models\User;
+use App\Http\Controllers\Input;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+
 
 
 class UserController extends Controller
@@ -44,7 +50,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+    
     }
 
     /**
@@ -52,7 +58,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $name = $request->input('name');
+        $piclink = $request->input('piclink');
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        DB::table('users')->insert([
+            'name' => $name,
+            'email'=> $email,
+            'password'=> Hash::make($password),
+            'piclink' => $piclink
+        ]);
     }
 
     /**

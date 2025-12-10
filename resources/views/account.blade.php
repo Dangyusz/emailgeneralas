@@ -116,6 +116,7 @@
             }
 
             .data-text {
+                text-align: start;
                 font-family: 'Inter', sans-serif;
                 font-size: 18px;
                 font-weight: 600;
@@ -171,20 +172,20 @@
             <main class="main-content">
                 <div class="page-container text-center d-flex d-flex-column flex-column align-items-center">
                 <h1 class="page-title" style="margin-top: 30px">Fiókom</h1>  
-                <img class="account-img" src="assets/kavics_szander.png" alt="bena vagy balint" width="200px" height="200px">
-                <h1 class="page-title" style="font-size: 40px">Kavics Szander</h1>
+                <img class="account-img" src="{{ $user->piclink }}" alt="bena vagy balint" width="200px" height="200px">
+                <h1 class="page-title" style="font-size: 40px">{{ $user->name }}</h1>
                 <section class="data-container">
                     <div class="data-card">
                         <span class="data-badge" style="text-align: center !important;">Adatok</span>
-                        <p class="data-text">E-mail:</p>
-                        <p class="data-text">Tell.:</p>
-                        <p class="data-text">Cégnév:</p>
-                        <p class="data-text">Beosztás:</p>
-                        <p class="data-text">Közösségimédia:</p>
+                        <p class="data-text"><b>E-mail:</b> <i>{{ $user->email }}</i></p>
+                        <p class="data-text"><b>Tell.:</b> <i>{{ $user->tell }}</i></p>
+                        <p class="data-text"><b>Cégnév:</b> <i>{{ $user->c_name }}</i></p>
+                        <p class="data-text"><b>Beosztás:</b> <i>{{ $user->job_title}}</i></p>
+                        <!--<p class="data-text"><b>Közösségimédia:</b></p>-->
                     </div>
                     
                 </section>
-                <button class="btn"><a href="account-settings">Adatok módosítása</a></button>
+                <button class="btn"><a href="/account_settings/{{ $user->id }}">Adatok módosítása</a></button>
                 
             </div>
             </main>

@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Contracts\CompanyRepositoryInterface;
 use App\Repositories\BaseRepository;
 use App\Models\Company;
+use App\Models\User;
 
 class CompanyRepository extends BaseRepository implements CompanyRepositoryInterface
 {
@@ -16,5 +17,9 @@ class CompanyRepository extends BaseRepository implements CompanyRepositoryInter
     public function FindByName($data): Company
     {
          return $this->model->where('name', $data)->firstOrFail();
+    }
+    public function getCompanyNameByUserId(int $id): ?string
+    {
+        return User::findOrFail($id)->company?->name;
     }
 }

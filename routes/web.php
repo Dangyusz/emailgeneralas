@@ -18,3 +18,9 @@ Route::get('/show1/{limit}', [CompanyController::class, 'index']);
 
 Route::get('/userbyid/{id}', [UserController::class, 'find']);
 
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
+
+Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
+
+
+

@@ -42,42 +42,141 @@
         }
 
         .page-title {
-            font-size: 32px;
+            font-size: 75px;
             font-weight: 700;
-            color: #322799;
-            margin-bottom: 24px;
+            color: #1D174B;
+            margin-bottom: 10px;
             text-align: center;
+            font-family: 'Karma';
+
         }
 
         .content-placeholder {
-            background: white;
-            padding: 40px;
-            min-height: 400px;
-            text-align: center;
+
+            padding-left: 21%;
+            padding-right: 21%;
+            padding-top: 2.5%;
+            padding-bottom: 4%;
+            min-height: 50%;
         }
 
         .content-placeholder p {
             color: #666;
             font-size: 16px;
+            background-color: white;
+
         }
 
-        .input div {
+        .input input {
             width: 100%;
             height: 2.75rem;
-            padding: 0 1rem;
+            padding: 10px;
             font-size: 0.875rem;
-            border: 1px solid #D1D5DB;
+            border: 1px solid #352d74ff;
             border-radius: 0.375rem;
-            background-color: white;
             transition: all 0.2s;
             font-family: inherit;
-
         }
 
         .input-label {
             font-size: 0.875rem;
+            color: #1D174B;
+            font-family: 'Inter', sans-serif;
+            text-align: left;
+        }
+
+        .input div {
+            padding-top: 10px;
+        }
+
+        .login {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 15px;
+            color: #19427A;
+        }
+
+        .login a {
+            color: #322799;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .login a:hover {
+            color: #4338CA;
+        }
+
+        .tovabb-button {
+            text-align: center;
+            position: relative;
+            max-height: 50%;
+            ;
+        }
+
+        .tov-but:hover {
+            background: linear-gradient(135deg, #4338CA 0%, #1D174B 100%);
+            transform: translateY(-1px);
+
+        }
+
+        button {
+            background-color: #322799;
+            color: white;
+            max-height: 50%;
+            padding: 12px 10px;
+            font-size: 16px;
+            min-width: 200px;
+            float: center;
+            background: #1D174B;
+            border: none;
+            border-radius: 10px;
             font-weight: 600;
-            color: #374151;
+            letter-spacing: 0.5px;
+            /box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);/ /transition: transform 0.2s, box-shadow 0.2s;/ /display: block;/
+        }
+
+        .page-wrapper {
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .page-wrapper::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 27%;
+            height: 100%;
+            background:
+                linear-gradient(to left, rgba(241, 249, 255, 1), rgba(241, 249, 255, 0)),
+                repeating-linear-gradient(145deg,
+                    #19427A 0px,
+                    #19427A 80px,
+                    #F4FCFF 80px,
+                    #F4FCFF 120px);
+            opacity: 0.50;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .page-wrapper::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 27%;
+            height: 100%;
+            background:
+                linear-gradient(to right, rgba(241, 249, 255, 1), rgba(25, 66, 122, 0)),
+                repeating-linear-gradient(145deg,
+                    #19427A 0px,
+                    #19427A 80px,
+                    #F4FCFF 80px,
+                    #F4FCFF 120px);
+            opacity: 0.50;
+            pointer-events: none;
+            z-index: -1;
         }
     </style>
 </head>
@@ -92,26 +191,35 @@
             <div class="content-placeholder">
                 <div class="input">
                     <div>
-                        <label for="emil" class="input-label">E-mail cím</label>
-                        <input type="email" name="email" class="form-control" placeholder="e-mail cím" required>
+                        <label for="email" class="input-label">E-mail cím</label>
+                        <input type="email" name="email" class="form-control" placeholder="E-mail cím" required>
                     </div>
 
                     <div>
-                        <input type="text" name="username" class="form-control" placeholder="felhasználónév" required>
+                        <label for="username" class="input-label">Felhasználónév</label>
+                        <input type="text" name="username" class="form-control" placeholder="Felhasználónév" required>
                     </div>
 
                     <div>
-                        <input type="password" name="password" class="form-control" placeholder="jelszó" required>
+                        <label for="password" class="input-label">Jelszó</label>
+                        <input type="password" name="password" class="form-control" placeholder="Jelszó" required>
                     </div>
 
                     <div>
+                        <label for="password_confirmation" class="input-label">Jelszó újra</label>
                         <input type="password" name="password_confirmation" class="form-control"
-                            placeholder="jelszó újra" required>
+                            placeholder="Jelszó újra" required>
                     </div>
                 </div>
+
+            </div>
+            <div class="tovabb-button">
+                <a href="/" class="tov-but"><button class="tov-but">Tovább</button></a>
             </div>
 
-            <div><a href="/login">Bejelentkezés</a></div>
+            <div class="login">Van már fiókod?<a href="/login">Jelentkezz be!</a></div>
+
+
         </main>
 
         @include('components.footer')

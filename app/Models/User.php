@@ -4,10 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 class User extends Authenticatable
@@ -22,12 +23,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'piclink',
         'email',
         'email_verified_at',
         'password',
+        'company_id',
         'remember_token',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'job_id',
+        'tell',
+        'c_name',
+        'job_title'
+
     ];
 
     /**
@@ -53,13 +61,16 @@ class User extends Authenticatable
         ];
     }
 
-    public function company(): HasOne
-    {
-        return $this->hasOne(Company::class);
-    }
+   public function company(): BelongsTo
+{
+    return $this->belongsTo(Company::class);
+}
 
-    public function emailSignature(): HasMany
+
+ public function emailSignature(): HasMany
     {
         return $this->hasMany(EmailSignature::class);
     }
+
+    
 }

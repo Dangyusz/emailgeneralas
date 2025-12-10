@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Collection;
 class UserService implements UserServiceInterface{
 
     public function __construct(
-    private readonly UserRepositoryInterface $UserRepository){}
+        private readonly UserRepositoryInterface $UserRepository,
+    ){}
 
     public function getRecentUsersTry( int $limit = 5): Collection
     {

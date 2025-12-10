@@ -265,13 +265,6 @@
                         </div>
 
                         <div class="mezo">
-                            <label for="from-label">Weboldalak:</label>
-                            <div class="input-wrapper">
-                                <input type="text" class="valtoztat">
-                            </div>
-                        </div>
-
-                        <div class="mezo">
                             <label for="from-label">Közösségimédia:</label>
                             <div class="input-wrapper">
                                 <input type="text" class="valtoztat">

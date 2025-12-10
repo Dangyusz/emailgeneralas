@@ -180,7 +180,6 @@
                         <p class="data-text">Tell.:</p>
                         <p class="data-text">Cégnév:</p>
                         <p class="data-text">Beosztás:</p>
-                        <p class="data-text">Weboldalak:</p>
                         <p class="data-text">Közösségimédia:</p>
                     </div>
                     

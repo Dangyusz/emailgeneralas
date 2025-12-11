@@ -1,75 +1,79 @@
-<?php
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-?>
-    <x-slot:title>
-        Sign In
-    </x-slot:title>
+        <title>Bejelentkezés - {{ config('app.name', 'AILFRAME') }}</title>
 
-    <div class="hero min-h-[calc(100vh-16rem)]">
-        <div class="hero-content flex-col">
-            <div class="card w-96 bg-base-100">
-                <div class="card-body">
-                    <h1 class="text-3xl font-bold text-center mb-6">Welcome Back</h1>
+        <link rel="icon" href="/favicon.ico" sizes="any">
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-                    <form method="POST" action="/login">
-                        @csrf
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800" rel="stylesheet" />
 
-                        <!-- Email -->
-                        <label class="floating-label mb-6">
-                            <input type="email"
-                                   name="email"
-                                   placeholder="[mail@example.com](<mailto:mail@example.com>)"
-                                   value="{{ old('email') }}"
-                                   class="input input-bordered @error('email') input-error @enderror"
-                                   required
-                                   autofocus>
-                            <span>Email</span>
-                        </label>
-                        @error('email')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
-                            </div>
-                        @enderror
+        {{-- Preload footer background --}}
+        <link rel="preload" as="image" href="https://cdn.hexaverse.hu/erasmus6.webp">
 
-                        <!-- Password -->
-                        <label class="floating-label mb-6">
-                            <input type="password"
-                                   name="password"
-                                   placeholder="••••••••"
-                                   class="input input-bordered @error('password') input-error @enderror"
-                                   required>
-                            <span>Password</span>
-                        </label>
-                        @error('password')
-                            <div class="label -mt-4 mb-2">
-                                <span class="label-text-alt text-error">{{ $message }}</span>
-                            </div>
-                        @enderror
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-                        <!-- Remember Me -->
-                        <div class="form-control mt-4">
-                            <label class="label cursor-pointer justify-start">
-                                <input type="checkbox"
-                                       name="remember"
-                                       class="checkbox">
-                                <span class="label-text ml-2">Remember me</span>
-                            </label>
-                        </div>
+            .page-wrapper {
+                background-color: #F1F9FF;
+                min-height: 100vh;
+                font-family: 'Inter', sans-serif;
+                display: flex;
+                flex-direction: column;
+            }
 
-                        <!-- Submit Button -->
-                        <div class="form-control mt-8">
-                            <button type="submit" class="btn btn-primary btn-sm w-full">
-                                Sign In
-                            </button>
-                        </div>
-                    </form>
+            .main-content {
+                flex: 1;
+                padding: 40px 24px;
+                max-width: 1200px;
+                margin: 0 auto;
+                width: 100%;
+            }
 
-                    <div class="divider">OR</div>
-                    <p class="text-center text-sm">
-                        Don't have an account?
-                        <a href="/register" class="link link-primary">Register</a>
-                    </p>
+            .page-title {
+                font-size: 32px;
+                font-weight: 700;
+                color: #322799;
+                margin-bottom: 24px;
+            }
+
+            .content-placeholder {
+                background: white;
+                border-radius: 12px;
+                padding: 40px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+                min-height: 400px;
+            }
+
+            .content-placeholder p {
+                color: #666;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-wrapper">
+            @include('components.navbar')
+            
+            <main class="main-content">
+                <h1 class="page-title">Bejelentkezés</h1>
+                <div class="content-placeholder">
+                    <p>Itt a bejelentkezési űrlap fog megjelenni.</p>
+                    {{-- A munkatársak ide dolgozhatnak --}}
                 </div>
-            </div>
+            </main>
+
+            @include('components.footer')
         </div>
-    </div>
+    </body>
+</html>

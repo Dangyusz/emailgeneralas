@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Services\UserService;
 use Illuminate\Contracts\View\View;
 use App\Models\User;
+use App\Http\Controllers\Input;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class UserController extends Controller
@@ -17,6 +22,7 @@ class UserController extends Controller
 
     public function __construct(
         private readonly UserServiceInterface $userService,
+        private readonly UserRepository $userRepository,
         private readonly CompanyRepository $companyRepo,
         private readonly UserRepository $userRepo,
     
@@ -49,6 +55,41 @@ class UserController extends Controller
        
 
         return view('userbyid', ['user' => $user]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create(Request $request, string $id)
+    {
+    
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $userarray = [
+            'c_name' -> $request -> input('c_name'),
+            'name' -> $request->input('name'),
+            'email'-> $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'piclink' -> $request->input('piclink'), 
+            'tell' -> $request -> input('tell'),
+            'job_title' -> $request -> input('job_title')
+        ];
+
+        $this->userRepository->create($userarray);
+        
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
     }
 
     /**

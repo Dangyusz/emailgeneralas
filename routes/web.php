@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -62,4 +63,6 @@ Route::get('/forgot-password', function () {
 Route::get('/account', function () {
     return view('account');
 })->name('account');
+
+Route::get('/job_types',[JobController::class, 'Jobs']);
 

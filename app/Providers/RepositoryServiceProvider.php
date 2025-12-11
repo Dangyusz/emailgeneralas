@@ -9,12 +9,15 @@ use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 use App\Services\JobService;
 use App\Contracts\JobServiceInterface;
+use App\Repositories\JobRepository;
+use App\Contracts\JobRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
 
     protected array $repositories = [
-        UserRepositoryInterface::class => UserRepository::class
+        UserRepositoryInterface::class => UserRepository::class,
+        JobRepositoryInterface::class => JobRepository::class
     ];
 
     protected array $services = [

@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,10 @@
     <ul>
        @foreach ($job_types as $job_type)
         <li>{{ $job_type['type'] }} - {{ $job_type['title'] }}</li>
+        @endforeach
+
     </ul>
+    
     
 </body>
 </html>

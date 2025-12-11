@@ -48,11 +48,9 @@
             margin-bottom: 10px;
             text-align: center;
             font-family: 'Karma';
-
         }
 
         .content-placeholder {
-
             padding-left: 21%;
             padding-right: 21%;
             padding-top: 2.5%;
@@ -64,7 +62,6 @@
             color: #666;
             font-size: 16px;
             background-color: white;
-
         }
 
         .input input {
@@ -110,7 +107,7 @@
             text-align: center;
             position: relative;
             max-height: 50%;
-            ;
+            padding-top: 40px;
         }
 
         .tov-but:hover {
@@ -119,7 +116,7 @@
 
         }
 
-        button {
+        input.tov-but {
             background-color: #322799;
             color: white;
             max-height: 50%;
@@ -188,7 +185,7 @@
         <main class="main-content">
             <h1 class="page-title">Regisztráció</h1>
 
-            <div class="content-placeholder">
+            <form class="content-placeholder" action="./login">
                 <div class="input">
                     <div>
                         <label for="email" class="input-label">E-mail cím</label>
@@ -211,18 +208,20 @@
                             placeholder="Jelszó újra" required>
                     </div>
                 </div>
+                <div class="tovabb-button">
+                    <a href="/" class="tov-but"><input type="submit" value="Tovább" class="tov-but"></button></a>
+                </div>
 
-            </div>
-            <div class="tovabb-button">
-                <a href="/" class="tov-but"><button class="tov-but">Tovább</button></a>
-            </div>
-
-            <div class="login">Van már fiókod?<a href="/login">Jelentkezz be!</a></div>
+                <div class="login">Van már fiókod?<a href="/login">Jelentkezz be!</a></div>
+            </form>
 
 
-        </main>
+    </div>
 
-        @include('components.footer')
+
+    </main>
+
+    @include('components.footer')
     </div>
 </body>
 

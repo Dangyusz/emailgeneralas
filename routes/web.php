@@ -63,3 +63,4 @@ Route::get('/account', function () {
     return view('account');
 })->name('account');
 
+Route::post('/store', [UserController::class,'store']);

@@ -41,7 +41,7 @@
                     </div>
                     
                 </section>
-                <button class="btn"><a href="/account_settings/{{ $user->id }}">Adatok módosítása</a></button>
+                <button class="btn"><a href="/account_settings/{{ $user->id }}">Adatok módosítása / Felvétele</a></button>
                 
             </div>
             </main>

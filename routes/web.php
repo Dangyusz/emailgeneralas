@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -67,3 +68,11 @@ Route::get('/account', function () {
 
 //Signature Routes
 Route::post('/signatures/store', [\App\Http\Controllers\SignatureController::class, 'store'])->name('signatures.store')->middleware('auth');
+Route::post('/store', [UserController::class,'store']);
+Route::view('/login', 'login')->middleware('guest')->name('login');
+
+Route::post('/login', LoginController::class)->middleware('guest');
+    
+
+
+

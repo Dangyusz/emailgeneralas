@@ -6,7 +6,7 @@ use App\Contracts\UserServiceInterface;
 use Illuminate\Http\Request;
 use App\Repositories\CompanyRepository;
 use App\Repositories\UserRepository;
-
+use Illuminate\Support\Facades\Auth;
 use App\Services\UserService;
 use Illuminate\Contracts\View\View;
 use App\Models\User;
@@ -131,7 +131,10 @@ class UserController extends Controller
 
         return redirect('/home')->with('success', 'User updated successfully!');
     }
+
+   
 }
+
 
    
 

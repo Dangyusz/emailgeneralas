@@ -20,4 +20,6 @@ class EmailSignatureRepository extends BaseRepository implements EmailSignatureR
     {
         return $this->model->where('user_id', "=", $id)->firstOrFail();
     }
+
+
 }

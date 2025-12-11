@@ -8,6 +8,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('/show/{limit}', [UserController::class, 'recent']);
 
 Route::get('/show1/{limit}', [CompanyController::class, 'index']);
@@ -63,3 +65,5 @@ Route::get('/account', function () {
     return view('account');
 })->name('account');
 
+//Signature Routes
+Route::post('/signatures/store', [\App\Http\Controllers\SignatureController::class, 'store'])->name('signatures.store')->middleware('auth');

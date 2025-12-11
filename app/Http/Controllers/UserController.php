@@ -6,7 +6,7 @@ use App\Contracts\UserServiceInterface;
 use Illuminate\Http\Request;
 use App\Repositories\CompanyRepository;
 use App\Repositories\UserRepository;
-
+use Illuminate\Support\Facades\Auth;
 use App\Services\UserService;
 use Illuminate\Contracts\View\View;
 use App\Models\User;
@@ -52,30 +52,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Request $request, string $id)
-    {
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
       public function edit(int $id)
@@ -114,7 +90,10 @@ class UserController extends Controller
 
         return redirect('/home')->with('success', 'User updated successfully!');
     }
+
+   
 }
+
 
    
 

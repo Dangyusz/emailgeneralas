@@ -101,6 +101,7 @@ class UserController extends Controller
             'c_name' => 'nullable|string|max:255',
             'job_title' => 'nullable|string|max:255',
             'password' => 'nullable|string|min:6|confirmed',
+            'piclink' => 'nullable|string',
         ]);
 
         $dataToUpdate = [
@@ -109,6 +110,7 @@ class UserController extends Controller
             'tell' => $validated['tell'],
             'c_name' => $validated['c_name'],
             'job_title' => $validated['job_title'],
+            'piclink' => $validated['piclink'],
             
         ];
 

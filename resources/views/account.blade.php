@@ -17,153 +17,9 @@
         {{-- Preload footer background --}}
         <link rel="preload" as="image" href="https://cdn.hexaverse.hu/erasmus6.webp">
 
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+        <link rel="stylesheet" href="{{ asset('/../css/account.css') }}">
 
-            body{
-                display: flex;
-                flex-direction: column;
-                min-height: 100vh;
-            }
-
-            .page-wrapper {
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                background-color: #F1F9FF;
-                font-family: 'Inter', sans-serif;
-            }
-
-            .main-content {
-                flex: 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding-left: 3% !important;
-                max-width: 97%;
-                /*padding: 80px 24px;*/
-            }
-
-            .page-container {
-                text-align: center;
-                background-color: #E3EEF6;
-                max-width: 10000px;
-                padding-left: 11%;
-                padding-right: 11%;
-                width: 97%;
-            }
-
-            .page-title {
-                text-align: center;
-                font-family: 'Inter', sans-serif;
-                font-size: 48px;
-                font-weight: 700;
-                color: #1e293b;
-                margin-bottom: 50px;
-                margin-top: 10px;
-            }
-
-            .page-description {
-                font-family: 'Inter', sans-serif;
-                font-size: 18px;
-                color: #64748b;
-            }
-
-            .data-container {
-                max-width: 50% !important;
-                margin: 0 auto;
-                display: flex;
-                justify-content: center;
-                gap: 32px;
-
-            }
-
-            .data-card {
-                background: #F1F9FF;
-                border-radius: 16px;
-                padding: 40px 40px !important;
-                text-align: center;
-                flex: 1;
-                position: relative;
-                /*
-                padding-top: 50px;
-                margin-bottom: 20px;
-                */
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                width: 200%;
-                /*
-                padding-left: 10%;
-                padding-right: 10%;
-                */
-            }
-
-            .data-badge {
-                position: absolute;
-                top: -16px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: #1D174B;
-                color: white;
-                font-family: 'Inter', sans-serif;
-                font-weight: 500;
-                font-size: 14px;
-                padding: 10px 28px;
-                border-radius: 25px;
-            }
-
-            .data-text {
-                text-align: start;
-                font-family: 'Inter', sans-serif;
-                font-size: 18px;
-                font-weight: 600;
-                color: #1D174B;
-                line-height: 1.5;
-                margin: 0;
-                word-wrap: break-word;
-            }
-
-            .btn {
-                background-color: #1D174B;
-                color: white;
-                font-family: 'Inter', sans-serif;
-                font-size: 16px;
-                font-weight: 600;
-                border-radius: 25px;
-                padding: 10px 20px;
-                margin-bottom: 50px;
-                box-shadow: 0 4px 12px rgb(0 0 0 / 27%);
-                border: 2px;
-                border-style: solid;
-                border-color: #1D174B;
-                transition-duration: 0.3s;
-                margin-top: 20px;
-            }
-
-            .btn:hover {
-                background-color: #ffffffff;
-                color: #1D174B;
-                cursor: pointer;
-                border-style: solid ;
-                border-color: #1D174B;
-            }
-
-            a {
-                text-decoration: none;
-                color: inherit;
-            }
-
-            .account-img {
-                border-radius: 30px;
-                border: 2px;
-                border-color: #1D174B;
-                border-style: solid;
-            }
-
-        </style>
+        
     </head>
     <body>
         <div class="page-wrapper">
@@ -180,7 +36,7 @@
                         <p class="data-text"><b>E-mail:</b> <i>{{ $user->email }}</i></p>
                         <p class="data-text"><b>Tell.:</b> <i>{{ $user->tell }}</i></p>
                         <p class="data-text"><b>Cégnév:</b> <i>{{ $user->c_name }}</i></p>
-                        <p class="data-text"><b>Beosztás:</b> <i>{{ $user->job_title}}</i></p>
+                        <p class="data-text" style="margin-bottom: 0px"><b>Beosztás:</b> <i>{{ $user->job_title}}</i></p>
                         <!--<p class="data-text"><b>Közösségimédia:</b></p>-->
                     </div>
                     

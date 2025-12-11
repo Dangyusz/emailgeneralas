@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface UserServiceInterface
 {
-    public function getRecentUser(int $limit = 5): collection;
+    public function getRecentUsers( int $limit = 5): Collection;
+
+    public function find(int $id);
 }
 

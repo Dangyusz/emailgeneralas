@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -20,12 +21,19 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'piclink',
         'email',
         'email_verified_at',
         'password',
+        'company_id',
         'remember_token',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'job_id',
+        'tell',
+        'c_name',
+        'job_title'
+
     ];
 
     public function company(): HasOne
@@ -55,4 +63,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+   public function company(): BelongsTo
+{
+    return $this->belongsTo(Company::class);
+}
+
+
+    
 }

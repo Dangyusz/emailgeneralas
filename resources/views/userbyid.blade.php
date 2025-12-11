@@ -1,3 +1,6 @@
+<?php
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +11,11 @@
 <body>
     <p><strong>Név:</strong> {{ $user->name }}</p>
     <p><strong>Email:</strong> {{ $user->email }}</p>
-    <p><strong>email_verified_at</strong> {{ $user->email_verified_at }}</p>
-    <p><strong>password:</strong> {{ $user->password }}</p>
-    <p><strong>remember_token:</strong> {{ $user->remember_token }}</p>
-    <p><strong>created_at:</strong> {{ $user->created_at }}</p>
-    <p><strong>updated_at:</strong> {{ $user->updated_at }}</p>
-    <p><strong>Company:</strong> {{ $user->company_id }}</p>
-</body>
-</html>
+     <p><strong>Telefonszam:</strong> {{ $user->tell }}</p>
+    <p><strong>Cég:</strong> {{ $user->c_name }}</p>
+    <p><strong>Beosztás:</strong> {{ $user->job_title}}</p>
+     <p><strong>Kép:</strong></p><img src='{{ $user->piclink }}' alt="Leírás a képről"> 
+    
+    </body>
+    
+   

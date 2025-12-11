@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -27,7 +27,12 @@ class User extends Authenticatable
         'company_id',
         'remember_token',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'job_id',
+        'tell',
+        'c_name',
+        'job_title'
+
     ];
 
     /**
@@ -53,8 +58,11 @@ class User extends Authenticatable
         ];
     }
 
-    public function company(): HasOne
-    {
-        return $this->hasOne(Company::class);
-    }
+   public function company(): BelongsTo
+{
+    return $this->belongsTo(Company::class);
+}
+
+
+    
 }

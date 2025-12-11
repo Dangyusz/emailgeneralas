@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Contracts\UserServiceInterface;
 use Illuminate\Http\Request;
+use App\Repositories\CompanyRepository;
+use App\Repositories\UserRepository;
+
 use App\Services\UserService;
 use Illuminate\Contracts\View\View;
 use App\Models\User;
@@ -19,13 +22,16 @@ class UserController extends Controller
 {
 
     public function __construct(
-        private readonly UserServiceInterface $UserService,
-        private readonly UserRepository $userRepository
+        private readonly UserServiceInterface $userService,
+        private readonly UserRepository $userRepository,
+        private readonly CompanyRepository $companyRepo,
+        private readonly UserRepository $userRepo,
+    
     ){}
     
     public function recent($limit)
     {
-        $recentusers = $this->UserService->getRecentUsers($limit);
+        $recentusers = $this->userService->getRecentUsers($limit);
         
 
         foreach ($recentusers as $users) {
@@ -41,7 +47,13 @@ class UserController extends Controller
 
      public function find($id)
     {
-        $user = $this->UserService->find($id);
+        $user = $this->userService->find($id);
+
+    
+
+        //$user -> company_name = $this->companyRepo->getCompanyNameByUserId($id);
+
+       
 
         return view('userbyid', ['user' => $user]);
     }
@@ -49,7 +61,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request, string $id)
     {
     
     }
@@ -84,24 +96,43 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+      public function edit(int $id)
     {
-        //
+        $user = $this->userRepo->find($id);
+
+        return view('edit', compact('user')); 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    // Form feldolgozása
+    public function update(Request $request, int $id)
     {
-        //
-    }
+        $user = $this->userRepo->find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        if (!$user) {
+            return redirect()->route('index')->with('error', 'User not found.');
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6|confirmed',
+        ]);
+
+        $dataToUpdate = [
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            
+        ];
+
+        if (!empty($validated['password'])) {
+            $dataToUpdate['password'] = bcrypt($validated['password']);
+        }
+
+        $this->userRepo->update($dataToUpdate, $id);
+
+        return redirect('/home')->with('success', 'User updated successfully!');
     }
 }
+
+   
+

@@ -14,7 +14,7 @@
 <body>
   
     @foreach($company as $cs)
-    <p>{{ $cs['id'] }}.{{ $cs['name'] }}</p>
+    <p>{{ $cs['id'] }}.{{ $cs['name'] }}:</p>
 @endforeach
   
     

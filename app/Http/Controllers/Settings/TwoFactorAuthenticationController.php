@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\TwoFactorAuthenticationRequest;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
-use Illuminate\View\View;
+use Inertia\Inertia;
+use Inertia\Response;
 use Laravel\Fortify\Features;
 
 class TwoFactorAuthenticationController extends Controller implements HasMiddleware
@@ -24,11 +25,11 @@ class TwoFactorAuthenticationController extends Controller implements HasMiddlew
     /**
      * Show the user's two-factor authentication settings page.
      */
-    public function show(TwoFactorAuthenticationRequest $request): View
+    public function show(TwoFactorAuthenticationRequest $request): Response
     {
         $request->ensureStateIsValid();
 
-        return view('account_settings', [
+        return Inertia::render('settings/TwoFactor', [
             'twoFactorEnabled' => $request->user()->hasEnabledTwoFactorAuthentication(),
             'requiresConfirmation' => Features::optionEnabled(Features::twoFactorAuthentication(), 'confirm'),
         ]);

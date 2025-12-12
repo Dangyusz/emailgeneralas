@@ -6,16 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\View\View;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class PasswordController extends Controller
 {
     /**
      * Show the user's password settings page.
      */
-    public function edit(): View
+    public function edit(): Response
     {
-        return view('account_settings');
+        return Inertia::render('settings/Password');
     }
 
     /**

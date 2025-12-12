@@ -41,12 +41,18 @@
                                 <label for="email" class="input-label">E-mail cím</label>
                                 <input id="email" type="email" name="email" value="{{ old('email') }}"
                                     autocomplete="email" autofocus placeholder="email@példa.com" class="input-field"
-                                    required/>
+                                    required />
+                            </div>
+
+                            <div class="input-group">
+                                <label for="password" class="input-label">Új jelszó</label>
+                                <input id="uj_pass" type="password" name="uj_pass" value="{{ old('email') }}" autofocus
+                                    placeholder="új jelszó" class="input-field" required />
                             </div>
 
                             <div class="button-group">
                                 <button type="submit" class="submit-button">
-                                    jelszó visszaállítási link küldése
+                                    jelszó átállitása
                                 </button>
                             </div>
                         </form>

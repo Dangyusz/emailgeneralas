@@ -146,7 +146,7 @@
 
         .signature-card .copy-icon:hover {
             color: #8d3c8f;
-        }   
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -233,7 +233,7 @@
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.1rem;
         }
 
         .input-label {

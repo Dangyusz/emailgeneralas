@@ -5,6 +5,46 @@
 }
 
 .page-wrapper {
+    background-color: #F1F9FF;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #322799;
+    margin-bottom: 24px;
+}
+
+.content-placeholder {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    min-height: 400px;
+}
+
+.content-placeholder p {
+    color: #666;
+    font-size: 16px;
+}* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-wrapper {
     position: relative;
     overflow: hidden;
     z-index: 0;

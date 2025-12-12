@@ -5,10 +5,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\LoginController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/show/{limit}', [UserController::class, 'recent']);
 
 Route::get('/show1/{limit}', [CompanyController::class, 'index']);
@@ -61,16 +57,15 @@ Route::get('/account', function () {
     return view('account');
 })->name('account');
 
+Route::get('/register', function () {
+    return view('register');
+})->middleware('guest');
+
 Route::post('/register', [UserController::class, 'store'])->name('register');
 
-
-
-
-
-
-
-
-Route::view('/login', 'login')->middleware('guest')->name('login');
+Route::get('/login', function () {
+    return view('login');
+})->name('login')->middleware('guest');
 
 Route::post('/login', LoginController::class)->middleware('guest');
 

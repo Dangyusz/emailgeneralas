@@ -29,24 +29,27 @@
         <main class="main-content">
             <h1 class="page-title">Regisztráció</h1>
 
-            <form action="{{ route('store') }}" method="POST">
+            <form action="{{ route('register') }}" method="POST">
 
                 @csrf
                 @method('POST')
                 <div class="input">
                     <div>
                         <label for="email" class="input-label">E-mail cím</label>
-                        <input type="email" name="email" class="form-control" placeholder="E-mail cím" required value="{{ 'email' }}">
+                        <input type="email" name="email" class="form-control" placeholder="E-mail cím" required
+                            value="{{ 'email' }}">
                     </div>
 
                     <div>
                         <label for="username" class="input-label">Felhasználónév</label>
-                        <input type="text" name="name" class="form-control" placeholder="Felhasználónév" required value="{{ 'name' }}">
+                        <input type="text" name="name" class="form-control" placeholder="Felhasználónév" required
+                            value="{{ 'name' }}">
                     </div>
 
                     <div>
                         <label for="password" class="input-label">Jelszó</label>
-                        <input type="password" name="password" class="form-control" placeholder="Jelszó" required value="{{ 'password' }}">
+                        <input type="password" name="password" class="form-control" placeholder="Jelszó" required
+                            value="{{ 'password' }}">
                     </div>
 
                     <div>

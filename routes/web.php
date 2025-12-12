@@ -1,91 +1,56 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\JobController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
+// Public routes
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/show/{limit}', [UserController::class, 'recent']);
-
-Route::get('/show1/{limit}', [CompanyController::class, 'index']);
-
-Route::get('/userbyid/{id}', [UserController::class, 'find']);
-
-Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
-
-Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
-
-
-
-
-// Főoldal
-Route::get('/', function () {
-    return view('app');
+Route::get('/home', function () {
+    $users = \App\Models\User::all();
+    return view('home', compact('users'));
 })->name('home');
 
-// Dashboard (bejelentkezett felhasználóknak)
-Route::get('/dashboard', function () {
-    return view('account');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('/app', 'app')->name('app');
 
-// Aláírás generálás
-Route::get('/generate', function () {
-    return view('generation');
-})->name('generate');
+// Logout route
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/');
+})->name('logout');
 
-// Előző aláírások
-Route::get('/signatures', function () {
-    return view('old_generations');
-})->name('signatures');
+// Protected routes
+Route::middleware('auth')->group(function () {
+    Route::get('/welcome', function () {
+        return view('welcome');
+    })->name('welcome');
 
-// Bejelentkezés
+    Route::view('/generation', 'generation')->name('generation');
+    Route::view('/old_generations', 'old_generations')->name('old_generations');
+    Route::view('/account', 'account')->name('account');
+    Route::view('/account_settings', 'account_settings')->name('account_settings');
 
-// Regisztráció
-Route::get('/register', function () {
-    return view('register');
-})->name('register')->middleware('guest');
+    // Company routes
+    Route::resource('companies', CompanyController::class);
 
+    // Job routes
+    Route::resource('jobs', JobController::class);
 
+    // User management routes
+    Route::get('/users', function () {
+        return view('users.index');
+    })->name('users.index');
 
-// Fiók
-Route::get('/account/{id}', [UserController::class, 'find']);
+    Route::get('/users/{id}', function ($id) {
+        return view('userbyid', ['id' => $id]);
+    })->name('users.show');
+});
 
-// Fiók beállítások
-Route::get('/', function () {
-    return view('account_settings');
-})->name('account-settings');
-
-
-Route::get('/account_settings/{id}', [UserController::class, 'edit'])->name('edit');
-
-
-
-
-Route::post('/store', [UserController::class, 'store']);
-
-
-
-
-Route::view('/login', 'login')->middleware('guest')->name('login');
-
-Route::post('/login', LoginController::class)->middleware('guest');
-
-
-
-
-Route::get('/forgot_password', function () {
-    return view('forgot_password');
-})->name('forgot_password');
-
-
-Route::put('/forgot_password', [UserController::class, 'updatepassword'])->name('updatepassword');
-
-
-    
-
-
-
+// Include settings routes
+require __DIR__ . '/settings.php';

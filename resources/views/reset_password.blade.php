@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace(search: '_', replace: '-', subject: app()->getLocale()) }}">
-<link rel="stylesheet" href="forgstyle.css">
+<link rel="stylesheet" href="/forgstyle.css">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Elfelejtett Jelszó - {{ config(key: 'app.name', default: 'MALFRAME') }}</title>
+    <title>Jelszó Visszaállítás - {{ config(key: 'app.name', default: 'MALFRAME') }}</title>
 
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -28,9 +28,9 @@
                 <div class="form-section">
                     <div class="form-content-wrapper">
                         <div class="form-header">
-                            <h1 class="form-title">Elfelejtett jelszó</h1>
+                            <h1 class="form-title">Jelszó visszaállítás</h1>
                             <p class="form-description">
-                                Írja be e-mail címét, hogy megkapja a jelszó-visszaállítási linket.
+                                Adja meg új jelszavát.
                             </p>
                         </div>
 
@@ -59,19 +59,32 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('password.email') }}" class="form">
+                        <form method="POST" action="{{ route('password.update') }}" class="form">
                             @csrf
+                            <input type="hidden" name="token" value="{{ $token }}">
 
                             <div class="input-group">
                                 <label for="email" class="input-label">E-mail cím</label>
-                                <input id="email" type="email" name="email" value="{{ old('email') }}"
+                                <input id="email" type="email" name="email" value="{{ old('email', $email) }}"
                                     autocomplete="email" autofocus placeholder="email@példa.com" class="input-field"
                                     required />
                             </div>
 
+                            <div class="input-group">
+                                <label for="password" class="input-label">Új jelszó</label>
+                                <input id="password" type="password" name="password" placeholder="Új jelszó"
+                                    class="input-field" required />
+                            </div>
+
+                            <div class="input-group">
+                                <label for="password_confirmation" class="input-label">Jelszó megerősítése</label>
+                                <input id="password_confirmation" type="password" name="password_confirmation"
+                                    placeholder="Jelszó megerősítése" class="input-field" required />
+                            </div>
+
                             <div class="button-group">
                                 <button type="submit" class="submit-button">
-                                    Jelszó-visszaállítási link küldése
+                                    Jelszó megváltoztatása
                                 </button>
                             </div>
                         </form>

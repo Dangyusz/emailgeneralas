@@ -38,44 +38,56 @@
             <h1 class="page-title">Bejelentkezés</h1>
             <div class="content-placeholder">
 
-                <form method="POST" action="/login">
+                @if (session('success'))
+                    <div
+                        style="padding: 1rem; margin-bottom: 1rem; background-color: #d4edda; color: #155724; border-radius: 0.25rem;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if ($errors->any())
+                    <div
+                        style="padding: 1rem; margin-bottom: 1rem; background-color: #f8d7da; color: #721c24; border-radius: 0.25rem;">
+                        <ul style="margin: 0; padding-left: 1.25rem;">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mezők">
                         <label for="form-label">Email-cím</label>
-                        <input type="email" name="email" class="form-control" placeholder="Email@example.com"
-                            value="{{ old('email') }}" required>
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                            placeholder="Email@example.com" value="{{ old('email') }}" required autofocus>
                         @error('email')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
-                        {{-- A munkatársak ide dolgozhatnak --}}
                     </div>
                     <div class="mez">
-
-                        <label for="form-label">Jelszó <a class="pass" href="/forgot-password">Elfelejtett
+                        <label for="form-label">Jelszó <a class="pass"
+                                href="{{ route('password.request') }}">Elfelejtett
                                 jelszó?</a></label>
 
-                        <input type="password" name="password" class="form-control
-                       @error('password') is-invalid @enderror" placeholder="Jelszó" required>
+                        <input type="password" name="password"
+                            class="form-control @error('password') is-invalid @enderror" placeholder="Jelszó" required>
 
                         @error('password')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
 
                         <div class="kpozepremenobutton">
-                            <a type="submit"><button>Tovább</button></a>
+                            <button type="submit">Tovább</button>
                         </div>
-
-
-
                     </div>
 
-
-
                     <div class="fiok">
-                        Nincs még fiókod?<a class="reg" href="/register"><b>Regisztrálj!</b></a></div>
-
+                        Nincs még fiókod?<a class="reg" href="{{ route('register') }}"><b>Regisztrálj!</b></a>
+                    </div>
+                </form>
             </div>
-            </form>
         </main>
 
         @include('components.footer')

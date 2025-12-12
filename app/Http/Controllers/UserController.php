@@ -114,6 +114,28 @@ class UserController extends Controller
 
         return redirect('/home')->with('success', 'User updated successfully!');
     }
+
+    public function updatepassword(Request $request, int $id)
+    {
+        $user = $this->userRepo->find($id);
+
+        if (!$user) {
+            return redirect()->route('index')->with('error', 'User not found.');
+        }
+
+        $validated = $request->validate([
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $dataToUpdate = [
+            'password' => bcrypt($validated['password']),
+        ];
+
+        $this->userRepo->update($dataToUpdate, $id);
+
+        return redirect('/UpPass ')->with('success', 'Password updated successfully!');
+
+    }   
 }
 
    

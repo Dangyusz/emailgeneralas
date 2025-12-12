@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\JobController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,6 +18,9 @@ Route::get('/userbyid/{id}', [UserController::class, 'find']);
 Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
 
 Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
+
+Route::put('/UpPass/{id}', [UserController::class, 'updatepassword'])->name('updatepassword');
+
 
 // Főoldal
 Route::get('/', function () {
@@ -64,5 +67,10 @@ Route::get('/account', function () {
     return view('account');
 })->name('account');
 
-Route::get('/job_types',[JobController::class, 'Jobs']);
+
+
+
+
+
+
 

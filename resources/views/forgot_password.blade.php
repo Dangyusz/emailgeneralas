@@ -34,12 +34,6 @@
                             </p>
                         </div>
 
-                        @if (session('status'))
-                            <div class="status-message">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
                         <form method="POST" action="{{ route('password.email') }}" class="form">
                             @csrf
 
@@ -47,10 +41,7 @@
                                 <label for="email" class="input-label">E-mail cím</label>
                                 <input id="email" type="email" name="email" value="{{ old('email') }}"
                                     autocomplete="email" autofocus placeholder="email@példa.com" class="input-field"
-                                    required />
-                                @error('email')
-                                    <div class="error-message">{{ $message }}</div>
-                                @enderror
+                                    required/>
                             </div>
 
                             <div class="button-group">

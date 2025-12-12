@@ -72,7 +72,9 @@ Route::post('/login', LoginController::class)->middleware('guest');
 
 
 
-
+Route::get('/forgot_password', function () {
+    return view('forgot_password');
+})->name('forgot_password');
 
 
 Route::put('/forgot_password', [UserController::class, 'updatepassword'])->name('updatepassword');

@@ -1,46 +1,116 @@
 <style>
     .tpl-3 {
-        background: url('https://cdn.hexaverse.hu/Group%202620.svg') right center/contain no-repeat;
+        max-width: 1000px;
+        margin: 40px auto;
+        position: relative;
+    }
+    .tpl-3 .inner-wrapper {
+        background: #ffffff url('https://cdn.hexaverse.hu/Group%202620.svg') right center / auto 185% no-repeat;
         border-radius: 20px;
         padding: 32px;
-        max-width: 900px;
-        margin: 40px auto;
+        border: 3px solid #c77fdc;
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+        position: relative;
         overflow: hidden;
     }
-    .tpl-3 .inner-card { background: #fff; border-radius: 10px; padding: 24px; border-left: 6px solid #ae2f94; }
-    .tpl-3 .content-wrapper { display: flex; gap: 24px; align-items: flex-start; }
-    .tpl-3 .left-col { flex: 0 0 180px; text-align: center; }
-    .tpl-3 .right-col { flex: 1; }
-    .tpl-3 img { width: 140px; height: 140px; border-radius: 12px; display: block; margin: 0 auto 12px; }
-    .tpl-3 .logo { font-family: serif; font-size: 28px; font-style: italic; letter-spacing: 1px; }
-    .tpl-3 .card-title { font-family: 'ivypresto-display', Georgia, serif; font-size: 28px; color: #b02a86; font-weight: 700; margin-bottom: 8px; }
-    .tpl-3 .card-details { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 12px; }
-    .tpl-3 .socials { display: flex; gap: 12px; margin-top: 12px; }
-    .tpl-3 .socials a { display: inline-flex; width: 36px; height: 36px; border-radius: 8px; background: #fff; border: 2px solid #ae2f94; align-items: center; justify-content: center; }
+    .tpl-3 .left-section {
+        flex: 0 0 200px;
+        text-align: center;
+    }
+    .tpl-3 .left-section img {
+        width: 180px;
+        height: 180px;
+        border-radius: 20px;
+        border: 4px solid #ffffff;
+        background: #f5f5f5;
+        display: block;
+        margin: 0 auto 16px;
+        object-fit: cover;
+    }
+    .tpl-3 .left-section .logo {
+        font-family: serif;
+        font-size: 32px;
+        font-style: italic;
+        letter-spacing: 2px;
+        margin-top: 12px;
+        color: #333;
+    }
+    .tpl-3 .right-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .tpl-3 .name-and-socials {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        border-bottom: 3px solid #ae2f94;
+        padding-bottom: 8px;
+    }
+    .tpl-3 .name {
+        font-family: 'ivypresto-display', Georgia, serif;
+        font-size: 40px;
+        color: #99007A;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+    .tpl-3 .socials {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+    .tpl-3 .socials a {
+        display: inline-flex;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: #fff;
+        border: 2px solid #8d8df5;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+    .tpl-3 .details {
+        font-size: 18px;
+        color: #d5a3e0;
+        line-height: 1.8;
+    }
+    .tpl-3 .details strong {
+        color: #333;
+    }
+    .tpl-3 .details a {
+        color: #d5a3e0;
+        text-decoration: underline;
+    }
+    .tpl-3 .weblink {
+        font-size: 18px;
+        color: #8d8df5;
+        text-decoration: underline;
+        margin-top: 4px;
+        display: inline-block;
+    }
 </style>
 
 <div class="signature-card tpl-3">
-    <div class="inner-card">
-        <div class="content-wrapper">
-            <div class="left-col">
-                <img id="cardImage" src="__IMG__" alt="Profile" />
-                <div class="logo">MAILFRAME</div>
-            </div>
-            <div class="right-col">
-                <div id="cardTitle" class="card-title">__TITLE__</div>
-                <div class="card-details">
-                    <strong>Email cím:</strong> <a id="cardEmail" href="mailto:__EMAIL__" style="color:#b02a86; text-decoration:underline;">__EMAIL__</a><br />
-                    <strong>Beosztás:</strong> <span id="cardPosition">__POSITION__</span><br />
-                    <strong>Weboldal:</strong> <a id="cardWebsite" href="__WEBSITE_HREF__" style="color:#b02a86; text-decoration:underline;">__WEBSITE_TEXT__</a>
-                </div>
+    <div class="inner-wrapper">
+        <div class="left-section">
+            <img id="cardImage" src="__IMG__" alt="Profile" />
+            <div id="cardLogo" class="logo">__COMPANY__</div>
+        </div>
+        <div class="right-section">
+            <div class="name-and-socials">
+                <div id="cardTitle" class="name">__TITLE__</div>
                 <div class="socials">
-                    <a href="https://facebook.com" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#b02a86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    </a>
-                    <a href="https://instagram.com" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#b02a86" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                    </a>
                 </div>
+            </div>
+            <div class="details">
+                <strong>Email cím:</strong> <a id="cardEmail" href="mailto:__EMAIL__">__EMAIL__</a><br/>
+                <strong>Beosztás:</strong> <span id="cardPosition">__POSITION__</span><br/>
+                <strong>Weboldal:</strong> <a id="cardWebsite" href="__WEBSITE_HREF__" class="weblink">__WEBSITE_TEXT__</a>
             </div>
         </div>
     </div>

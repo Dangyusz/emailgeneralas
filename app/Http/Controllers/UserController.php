@@ -26,34 +26,35 @@ class UserController extends Controller
         private readonly UserRepository $userRepository,
         private readonly CompanyRepository $companyRepo,
         private readonly UserRepository $userRepo,
-    
-    ){}
-    
+
+    ) {
+    }
+
     public function recent($limit)
     {
         $recentusers = $this->userService->getRecentUsers($limit);
-        
+
 
         foreach ($recentusers as $users) {
-           $refindusers[] = [
-            "id" => $users['id'],
-            "name" => $users["name"],
-            "email" => $users["email"]
-           ];
+            $refindusers[] = [
+                "id" => $users['id'],
+                "name" => $users["name"],
+                "email" => $users["email"]
+            ];
         }
 
-        return view('show', [ 'recentuser' => $recentusers ]);
+        return view('show', ['recentuser' => $recentusers]);
     }
 
-     public function find($id)
+    public function find($id)
     {
         $user = $this->userService->find($id);
 
-    
+
 
         //$user -> company_name = $this->companyRepo->getCompanyNameByUserId($id);
 
-       
+
 
         return view('userbyid', ['user' => $user]);
     }
@@ -63,7 +64,7 @@ class UserController extends Controller
      */
     public function create(Request $request, string $id)
     {
-    
+
     }
 
     /**
@@ -72,17 +73,17 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $userarray = [
-            'c_name' -> $request -> input('c_name'),
-            'name' -> $request->input('name'),
-            'email'-> $request->input('email'),
+            'c_name'->$request->input('c_name'),
+            'name'->$request->input('name'),
+            'email'->$request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'piclink' -> $request->input('piclink'), 
-            'tell' -> $request -> input('tell'),
-            'job_title' -> $request -> input('job_title')
+            'piclink'->$request->input('piclink'),
+            'tell'->$request->input('tell'),
+            'job_title'->$request->input('job_title')
         ];
 
         $this->userRepository->create($userarray);
-        
+
     }
 
     /**
@@ -96,11 +97,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-      public function edit(int $id)
+    public function edit(int $id)
     {
         $user = $this->userRepo->find($id);
 
-        return view('edit', compact('user')); 
+        return view('edit', compact('user'));
     }
 
     // Form feldolgozása
@@ -121,7 +122,7 @@ class UserController extends Controller
         $dataToUpdate = [
             'name' => $validated['name'],
             'email' => $validated['email'],
-            
+
         ];
 
         if (!empty($validated['password'])) {
@@ -133,38 +134,32 @@ class UserController extends Controller
         return redirect('/home')->with('success', 'User updated successfully!');
     }
 
-    
+
 
     public function updatepassword(Request $request)
     {
-        $user = $this->userRepo->FindByEmail($request->input('email'));
-
-        if (!$user) {
-            return redirect()->route('/forgot_password')->with('error', 'User not found.');
-        }
-
-        /*$user = $this->userRepo->find($id);*/
-
-
         $validated = $request->validate([
+            'email' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
 
+        try {
+            $user = $this->userRepo->FindByEmail($validated['email']);
+        } catch (\Exception $e) {
+            return redirect()->route('forgot_password')->with('error', 'Felhasználó nem található ezzel az email címmel.');
+        }
+
         $dataToUpdate = [
-            'password' => bcrypt($validated['password']),
+            'password' => $validated['password'],
         ];
 
-        $this->userRepo->update($dataToUpdate, $user->id );
+        $this->userRepo->update($dataToUpdate, $user->id);
 
-        return redirect('/UpPass ')->with('success', 'Password updated successfully!');
+        return redirect()->route('login')->with('success', 'Jelszó sikeresen megváltoztatva! Most már bejelentkezhet.');
+    }
 
-
-        
-        
-    }   
-    
 }
 
 
-   
+
 

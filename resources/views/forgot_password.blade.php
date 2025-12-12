@@ -33,9 +33,35 @@
                                 Írja be e-mail címét, hogy megkapja a jelszó-visszaállítási linket.
                             </p>
                         </div>
-                        @csrf
-                        @method('PUT')
-                        <form method="PUT" action="{{ route('forgot_password') }}" class="form">
+
+                        @if (session('success'))
+                            <div
+                                style="padding: 1rem; margin-bottom: 1rem; background-color: #d4edda; color: #155724; border-radius: 0.25rem;">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div
+                                style="padding: 1rem; margin-bottom: 1rem; background-color: #f8d7da; color: #721c24; border-radius: 0.25rem;">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div
+                                style="padding: 1rem; margin-bottom: 1rem; background-color: #f8d7da; color: #721c24; border-radius: 0.25rem;">
+                                <ul style="margin: 0; padding-left: 1.25rem;">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('updatepassword') }}" class="form">
+                            @csrf
+                            @method('PUT')
 
                             <div class="input-group">
                                 <label for="email" class="input-label">E-mail cím</label>
@@ -46,8 +72,8 @@
 
                             <div class="input-group">
                                 <label for="password" class="input-label">Új jelszó</label>
-                                <input id="uj_pass" type="password" name="uj_pass" value="{{ old('email') }}" autofocus
-                                    placeholder="új jelszó" class="input-field" required />
+                                <input id="password" type="password" name="password" value="{{ old('password') }}"
+                                    autofocus placeholder="új jelszó" class="input-field" required />
                             </div>
 
                             <div class="button-group">

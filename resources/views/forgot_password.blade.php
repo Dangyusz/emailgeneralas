@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace(search: '_', replace: '-', subject: app()->getLocale()) }}">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="forgstyle.css">
 
 <head>
     <meta charset="utf-8">
@@ -34,7 +34,7 @@
                             </p>
                         </div>
 
-                        <form method="POST" action="{{ route('password.email') }}" class="form">
+                        <form method="POST" action="{{ route('/UpPass/{id}',  ['id' => $user->id]) }}" class="form">
                             @csrf
 
                             <div class="input-group">

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 
 
 
+
 class UserController extends Controller
 {
 
@@ -140,7 +141,36 @@ class UserController extends Controller
        return redirect('/account/' . $id);
     }
 
-   
+    
+
+    public function updatepassword(Request $request)
+    {
+        $user = $this->userRepo->FindByEmail($request->input('email'));
+
+        if (!$user) {
+            return redirect()->route('/forgot-password')->with('error', 'User not found.');
+        }
+
+        /*$user = $this->userRepo->find($id);*/
+
+
+        $validated = $request->validate([
+            'password' => 'required|string|min:6',
+        ]);
+
+        $dataToUpdate = [
+            'password' => bcrypt($validated['password']),
+        ];
+
+        $this->userRepo->update($dataToUpdate, $id);
+
+        return redirect('/UpPass ')->with('success', 'Password updated successfully!');
+
+
+        
+        
+    }   
+    
 }
 
 

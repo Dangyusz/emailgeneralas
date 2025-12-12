@@ -19,6 +19,9 @@ Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
 
 Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
 
+Route::put('/UpPass/{id}', [UserController::class, 'updatepassword'])->name('updatepassword');
+
+
 // Főoldal
 Route::get('/', function () {
     return view('app');

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -35,6 +36,11 @@ class User extends Authenticatable
 
     ];
 
+    public function company(): HasOne
+    {
+        return $this->HasOne(company::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -58,10 +64,10 @@ class User extends Authenticatable
         ];
     }
 
-   public function company(): BelongsTo
+ /*  public function company(): BelongsTo
 {
     return $this->belongsTo(Company::class);
-}
+}*/
 
 
     

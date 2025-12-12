@@ -1,13 +1,14 @@
-<?php 
+<?php
 
-namespace App\Contracts;
+namespace App\contracts;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 use App\Models\User;
 
-
-interface UserRepositoryInterface extends BaseRepositoryInterface
+interface  UserRepositoryInterface extends BaseRepositoryInterface
 {
-    public function FindByEmail($data): User;
+    public function findByEmail(string $email): ?User;
 
 
 }

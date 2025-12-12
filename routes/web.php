@@ -5,10 +5,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\LoginController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/show/{limit}', [UserController::class, 'recent']);
 
 Route::get('/show1/{limit}', [CompanyController::class, 'index']);
@@ -18,6 +14,9 @@ Route::get('/userbyid/{id}', [UserController::class, 'find']);
 Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
 
 Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
+
+Route::put('/UpPass/{id}', [UserController::class, 'updatepassword'])->name('updatepassword');
+
 
 // Főoldal
 Route::get('/', function () {
@@ -40,6 +39,9 @@ Route::get('/signatures', function () {
 })->name('signatures');
 
 // Bejelentkezés
+Route::get('/login', function () {
+    return view('login');
+})->name('login')->middleware('guest');
 
 // Regisztráció
 Route::get('/register', function () {
@@ -65,14 +67,22 @@ Route::get('/account_settings/{id}', [UserController::class, 'edit'])->name('edi
 
 
 
-Route::post('/store', [UserController::class, 'store']);
+Route::get('/register', function () {
+    return view('register');
+})->middleware('guest');
+
+Route::post('/register', [UserController::class,  'store'])->name('register');
 
 
 
 
-Route::view('/login', 'login')->middleware('guest')->name('login');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login')->middleware('guest');
 
 Route::post('/login', LoginController::class)->middleware('guest');
+
 
 
 

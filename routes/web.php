@@ -42,15 +42,7 @@ Route::get('/signatures', function () {
     return view('old_generations');
 })->name('signatures');
 
-// Fiók beállítások
-Route::get('/account-settings', function () {
-    return view('account_settings');
-})->name('account-settings');
-
 // Bejelentkezés
-Route::get('/login', function () {
-    return view('login');
-})->name('login')->middleware('guest');
 
 // Regisztráció
 Route::get('/register', function () {
@@ -60,11 +52,24 @@ Route::get('/register', function () {
 
 
 // Fiók
-Route::get('/account', function () {
-    return view('account');
-})->name('account');
+Route::get('/account/{id}', [UserController::class, 'find']);
 
-Route::post('/store', [UserController::class,'store']);
+// Fiók beállítások
+Route::get('/', function () {
+    return view('account_settings');
+})->name('account-settings');
+
+
+Route::get('/account_settings/{id}', [UserController::class, 'edit'])->name('edit');
+
+
+
+
+Route::post('/store', [UserController::class, 'store']);
+
+
+
+
 Route::view('/login', 'login')->middleware('guest')->name('login');
 
 Route::post('/login', LoginController::class)->middleware('guest');

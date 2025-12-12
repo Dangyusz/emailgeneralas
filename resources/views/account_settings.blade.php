@@ -17,59 +17,78 @@
         {{-- Preload footer background --}}
         <link rel="preload" as="image" href="https://cdn.hexaverse.hu/erasmus6.webp">
 
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            .page-wrapper {
-                background-color: #F1F9FF;
-                min-height: 100vh;
-                font-family: 'Inter', sans-serif;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .main-content {
-                flex: 1;
-                padding: 40px 24px;
-                max-width: 1200px;
-                margin: 0 auto;
-                width: 100%;
-            }
-
-            .page-title {
-                font-size: 32px;
-                font-weight: 700;
-                color: #322799;
-                margin-bottom: 24px;
-            }
-
-            .content-placeholder {
-                background: white;
-                border-radius: 12px;
-                padding: 40px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-                min-height: 400px;
-            }
-
-            .content-placeholder p {
-                color: #666;
-                font-size: 16px;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset('/../css/account_settings.css') }}">
     </head>
     <body>
         <div class="page-wrapper">
             @include('components.navbar')
             
             <main class="main-content">
-                <h1 class="page-title">Fiók Beállítások</h1>
-                <div class="content-placeholder">
-                    <p>Itt a fiók beállítások tartalma fog megjelenni.</p>
-                    {{-- A munkatársak ide dolgozhatnak --}}
+                <div class="page-container text-center d-flex d-flex-column flex-column align-items-center">
+                    <h1 class="page-title">Fiók Beállítások</h1>
+                    
+                    <form action="{{ route('update', $user->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="mezo">
+                            <label for="from-label">Név:</label>
+                            <div class="input-wrapper">
+                                <input type="text" name="name" value="{{ old('name', $user->name) }}" class="valtoztat">
+                                @error('name') <div>{{ $message }}</div> @enderror
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="mezo">
+                            <label for="from-label">Email:</label>
+                            <div class="input-wrapper">
+                                <input type="email" name="email" value="{{ old('email', $user->email) }}" class="valtoztat">
+                                @error('email') <div>{{ $message }}</div> @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="mezo">
+                            <label for="from-label">Tell.:</label>
+                            <div class="input-wrapper">
+                                <input type="tel" name="tell" value="{{ old('tell', $user->tell) }}" class="valtoztat">
+                                @error('tell') <div>{{ $message }}</div> @enderror
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="mezo">
+                            <label for="from-label">Cégnév:</label>
+                            <div class="input-wrapper">
+                                <input type="text" name="c_name" value="{{ old('c_name', $user->c_name) }}" class="valtoztat">
+                                @error('c_name') <div>{{ $message }}</div> @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="mezo">
+                            <label for="from-label">Beosztás:</label>
+                            <div class="input-wrapper">
+                                <input type="text" name="job_title" value="{{ old('job_title', $user->job_title) }}" class="valtoztat">
+                                @error('job_title') <div>{{ $message }}</div> @enderror
+                            </div>
+                        </div>
+
+                        <div class="mezo">
+                            <label for="from-label">Kép link:</label>
+                            <div class="input-wrapper">
+                                <input type="text" name="piclink" value="{{ old('piclink', $user->piclink) }}" class="valtoztat">
+                                @error('piclink') <div>{{ $message }}</div> @enderror
+                            </div>
+                        </div>
+
+                        <div class="mezo1">
+                            <!--<div class="btn-mezo">
+                                <button class="btn" >Profilkép módosítása</button>
+                            </div>-->
+                            <div class="btn-mentes-mezo">
+                                <button class="btn-mentes" type="submit">Módosítás mentése</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </main>
 

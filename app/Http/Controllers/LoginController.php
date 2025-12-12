@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function __invoke(Request $request) 
+    public function __invoke(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
@@ -17,7 +17,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/home')->with('success', 'Üdv ujra!!!');
+            return redirect()->intended('/welcome')->with('success', 'Üdv ujra!!!');
         }
 
         return back()

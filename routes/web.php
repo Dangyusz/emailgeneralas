@@ -40,9 +40,6 @@ Route::get('/signatures', function () {
 })->name('signatures');
 
 // Bejelentkezés
-Route::get('/login', function () {
-    return view('login');
-})->name('login')->middleware('guest');
 
 // Regisztráció
 Route::get('/register', function () {
@@ -68,11 +65,14 @@ Route::get('/account_settings/{id}', [UserController::class, 'edit'])->name('edi
 
 
 
-Route::post('/store', [UserController::class,'store']);
+Route::post('/store', [UserController::class, 'store']);
+
+
+
+
 Route::view('/login', 'login')->middleware('guest')->name('login');
 
 Route::post('/login', LoginController::class)->middleware('guest');
-    
 
 
 

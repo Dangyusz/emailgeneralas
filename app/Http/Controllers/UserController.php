@@ -54,7 +54,7 @@ class UserController extends Controller
 
        
 
-        return view('userbyid', ['user' => $user]);
+        return view('account', ['user' => $user]);
     }
 
     /**
@@ -99,7 +99,7 @@ class UserController extends Controller
     {
         $user = $this->userRepo->find($id);
 
-        return view('edit', compact('user')); 
+        return view('account_settings', compact('user')); 
     }
 
     // Form feldolgozása
@@ -114,12 +114,20 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
+            'tell' => 'nullable|string|max:20',
+            'c_name' => 'nullable|string|max:255',
+            'job_title' => 'nullable|string|max:255',
             'password' => 'nullable|string|min:6|confirmed',
+            'piclink' => 'nullable|string',
         ]);
 
         $dataToUpdate = [
             'name' => $validated['name'],
             'email' => $validated['email'],
+            'tell' => $validated['tell'],
+            'c_name' => $validated['c_name'],
+            'job_title' => $validated['job_title'],
+            'piclink' => $validated['piclink'],
             
         ];
 
@@ -129,7 +137,7 @@ class UserController extends Controller
 
         $this->userRepo->update($dataToUpdate, $id);
 
-        return redirect('/home')->with('success', 'User updated successfully!');
+       return redirect('/account/' . $id);
     }
 
    

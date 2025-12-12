@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Contracts\UserRepositoryInterface;
 use App\Repositories\BaseRepository;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 

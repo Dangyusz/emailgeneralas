@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -64,6 +65,14 @@ Route::get('/', function () {
 
 Route::get('/account_settings/{id}', [UserController::class, 'edit'])->name('edit');
 
+
+
+
+Route::post('/store', [UserController::class,'store']);
+Route::view('/login', 'login')->middleware('guest')->name('login');
+
+Route::post('/login', LoginController::class)->middleware('guest');
+    
 
 
 

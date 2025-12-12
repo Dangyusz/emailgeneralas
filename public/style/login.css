@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-wrapper {
+    background-color: #F1F9FF;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #322799;
+    margin-bottom: 24px;
+}
+
+.content-placeholder {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    min-height: 400px;
+}
+
+.content-placeholder p {
+    color: #666;
+    font-size: 16px;
+}* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-wrapper {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.page-wrapper::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 27%;
+    height: 100%;
+    background:
+        linear-gradient(to left, rgba(241, 249, 255, 1), rgba(241, 249, 255, 0)),
+        repeating-linear-gradient(145deg,
+            #19427A 0px,
+            #19427A 80px,
+            #F4FCFF 80px,
+            #F4FCFF 120px);
+    opacity: 0.50;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.page-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 27%;
+    height: 100%;
+    background:
+        linear-gradient(to right, rgba(241, 249, 255, 1), rgba(25, 66, 122, 0)),
+        repeating-linear-gradient(145deg,
+            #19427A 0px,
+            #19427A 80px,
+            #F4FCFF 80px,
+            #F4FCFF 120px);
+    opacity: 0.50;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+.page-title {
+    font-size: 50px;
+    font-weight: 700;
+    color: #322799;
+    margin-bottom: 24px;
+    text-align: center;
+    font-family: 'Karma';
+    color: #19427A;
+    font-size: 60px;
+}
+
+.content-placeholder {
+
+    border-radius: 12px;
+    padding-top: none;
+
+    /*box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);*/
+    min-height: 400px;
+    padding-right: 21%;
+    ;
+    padding-left: 21%;
+    ;
+
+}
+
+.content-placeholder p {
+    color: #666;
+    font-size: 16px;
+    padding-right: 200px;
+    padding-left: 200px;
+
+
+}
+
+.mezők {
+    padding-right: 200px;
+    padding-left: 200px;
+    width: 100%;
+    padding: 12px 16px;
+    color: #19427A;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.mez {
+    color: #19427A;
+    width: 100%;
+    padding: 12px 16px;
+
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s ease;
+}
+
+h4 {
+    text-align: right;
+    color: #322799;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.but {
+    text-align: center;
+    float: center;
+    position: relative;
+    max-height: 50%;
+    width: 200px;
+    justify-content: center;
+}
+
+.kpozepremenobutton {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+button {
+    text-align: center;
+    justify-content: center;
+    background-color: #19427A;
+    color: white;
+    max-height: 50%;
+    width: 200px;
+    padding: 12px 24px;
+    font-size: 16px;
+    min-width: 200px;
+    margin-top: 50px;
+    float: center;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #4F709B 0%, #19427A 100%);
+}
+
+.fiok {
+    color: #19427A;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.reg {
+    text-decoration: none;
+    color: #322799;
+}
+
+.reg:hover {
+    color: #10094bff;
+
+}
+
+.pass {
+    text-align: right;
+    float: right;
+    color: #322799;
+}
+
+.pass:hover {
+    color: #10094bff;
+}

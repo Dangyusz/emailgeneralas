@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<link rel="stylesheet" href="{{ asset('css/regstyle.css') }}">
 
 <head>
     <meta charset="utf-8">
@@ -13,16 +12,55 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-
-
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800" rel="stylesheet" />
 
     {{-- Preload footer background --}}
     <link rel="preload" as="image" href="https://cdn.hexaverse.hu/erasmus6.webp">
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        .page-wrapper {
+            background-color: #F1F9FF;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
 
+        .main-content {
+            flex: 1;
+            padding: 40px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #322799;
+            margin-bottom: 24px;
+        }
+
+        .content-placeholder {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            min-height: 400px;
+        }
+
+        .content-placeholder p {
+            color: #666;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,47 +69,14 @@
 
         <main class="main-content">
             <h1 class="page-title">Regisztráció</h1>
+            <div class="content-placeholder">
+                <p>Itt a regisztrációs űrlap fog megjelenni.</p>
+                <a href="/login">tovább</a>
+                {{-- A munkatársak ide dolgozhatnak --}}
+            </div>
+        </main>
 
-            <form action="{{ route('register') }}" method="POST">
-
-                @csrf
-                @method('POST')
-                <div class="input">
-                    <div>
-                        <label for="email" class="input-label">E-mail cím</label>
-                        <input type="email" name="email" class="form-control" placeholder="E-mail cím" required>
-                    </div>
-
-                    <div>
-                        <label for="username" class="input-label">Felhasználónév</label>
-                        <input type="text" name="name" class="form-control" placeholder="Felhasználónév" required>
-                    </div>
-
-                    <div>
-                        <label for="password" class="input-label">Jelszó</label>
-                        <input type="password" name="password" class="form-control" placeholder="Jelszó" required>
-                    </div>
-
-                    <div>
-                        <label for="password_confirmation" class="input-label">Jelszó újra</label>
-                        <input type="password" name="password_confirmation" class="form-control"
-                            placeholder="Jelszó újra" required>
-                    </div>
-                </div>
-                <div class="tovabb-button">
-                    <button class="tov-but" type="submit">Regisztráció</button>
-                </div>
-
-                <div class="login">Van már fiókod?<a href="/login">Jelentkezz be!</a></div>
-            </form>
-
-
-    </div>
-
-
-    </main>
-
-    @include('components.footer')
+        @include('components.footer')
     </div>
 </body>
 

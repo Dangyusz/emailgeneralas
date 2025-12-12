@@ -15,6 +15,9 @@ Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
 
 Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
 
+Route::put('/UpPass/{id}', [UserController::class, 'updatepassword'])->name('updatepassword');
+
+
 // Főoldal
 Route::get('/', function () {
     return view('app');
@@ -35,17 +38,15 @@ Route::get('/signatures', function () {
     return view('old_generations');
 })->name('signatures');
 
-// Fiók beállítások
-Route::get('/account-settings', function () {
-    return view('account_settings');
-})->name('account-settings');
-
 // Bejelentkezés
 Route::get('/login', function () {
     return view('login');
 })->name('login')->middleware('guest');
 
-
+// Regisztráció
+Route::get('/register', function () {
+    return view('register');
+})->name('register')->middleware('guest');
 
 // Elfelejtett jelszó
 Route::get('/forgot-password', function () {
@@ -53,15 +54,28 @@ Route::get('/forgot-password', function () {
 })->name('password.request')->middleware('guest');
 
 // Fiók
-Route::get('/account', function () {
-    return view('account');
-})->name('account');
+Route::get('/account/{id}', [UserController::class, 'find']);
+
+// Fiók beállítások
+Route::get('/', function () {
+    return view('account_settings');
+})->name('account-settings');
+
+
+Route::get('/account_settings/{id}', [UserController::class, 'edit'])->name('edit');
+
+
+
 
 Route::get('/register', function () {
     return view('register');
 })->middleware('guest');
 
-Route::post('/register', [UserController::class, 'store'])->name('register');
+Route::post('/register', [UserController::class,  'store'])->name('register');
+
+
+
+
 
 Route::get('/login', function () {
     return view('login');

@@ -362,6 +362,7 @@
                         <h1 class="hero-title">EGYEDI EMAIL ALÁÍRÁS<br/>EGY PILLANAT ALATT</h1>
                         <p class="hero-text">Próbáld ki professziónális generálónkat<br/>10 alkalommal ingyen</p>
                         <div class="hero-buttons">
+                            
                             <a href="/generate" class="btn-primary">Kipróbálom</a>
                             <a href="/register" class="btn-secondary">Regisztrálok</a>
                         </div>

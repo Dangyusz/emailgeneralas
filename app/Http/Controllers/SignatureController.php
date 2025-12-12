@@ -11,7 +11,7 @@ class SignatureController extends Controller
 {
 
     public function __construct(
-                private readonly EmailSignatureRepositoryInterface $emailSignatureRepository,
+        private readonly EmailSignatureRepositoryInterface $emailSignatureRepository,
     ){}
 
     /**
@@ -44,6 +44,12 @@ class SignatureController extends Controller
         ];
 
         $this->emailSignatureRepository->create($data);
+    }
+
+    public function listByUserId($userId)
+    {
+        $emailsignaturesbyid =  $this->emailSignatureRepository->getByUserId($userId); 
+        // ToDo: return the correct view
     }
 
     /**

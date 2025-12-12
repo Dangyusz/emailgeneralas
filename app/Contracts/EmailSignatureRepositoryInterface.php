@@ -10,7 +10,7 @@ interface EmailSignatureRepositoryInterface extends BaseRepositoryInterface
 {
    public function FindByUserId(int $id): EmailSignature;
 
-
+   public function getByUserId(int $userId);
 
 
 }

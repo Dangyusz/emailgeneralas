@@ -5,7 +5,7 @@
         position: relative;
     }
     .tpl-6 .inner-wrapper {
-        background: #ffffff url('https://cdn.hexaverse.hu/narancs.svg') right center / auto 185% no-repeat;
+        background: #233D4C url('https://cdn.hexaverse.hu/narancs.svg') right center / auto 185% no-repeat;
         border-radius: 20px;
         padding: 32px;
         border: 3px solid #e06100ff;
@@ -80,7 +80,7 @@
         line-height: 1.8;
     }
     .tpl-6 .details strong {
-        color: #333;
+        color: #000000ff;
     }
     .tpl-6 .details a {
         color: #fda900ff;

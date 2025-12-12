@@ -5,10 +5,10 @@
         position: relative;
     }
     .tpl-7 .inner-wrapper {
-        background: #ffffff url('https://cdn.hexaverse.hu/Group%202620.svg') right center / auto 185% no-repeat;
+        background: #1C1C1C url('https://cdn.hexaverse.hu/piros.svg') right center / auto 185% no-repeat;
         border-radius: 20px;
         padding: 32px;
-        border: 3px solid #c77fdc;
+        border: 3px solid #dc7f7fff;
         display: flex;
         gap: 32px;
         align-items: flex-start;
@@ -48,13 +48,13 @@
         align-items: flex-start;
         justify-content: space-between;
         gap: 16px;
-        border-bottom: 3px solid #ae2f94;
+        border-bottom: 3px solid #ae2f2fff;
         padding-bottom: 8px;
     }
     .tpl-7 .name {
         font-family: 'ivypresto-display', Georgia, serif;
         font-size: 40px;
-        color: #99007A;
+        color: #990000ff;
         font-weight: 600;
         line-height: 1.2;
     }
@@ -76,14 +76,14 @@
     }
     .tpl-7 .details {
         font-size: 18px;
-        color: #d5a3e0;
+        color: #e0a3a3ff;
         line-height: 1.8;
     }
     .tpl-7 .details strong {
-        color: #333;
+        color: #000000ff;
     }
     .tpl-7 .details a {
-        color: #d5a3e0;
+        color: #e0a3a3ff;
         text-decoration: underline;
     }
     .tpl-7 .weblink {

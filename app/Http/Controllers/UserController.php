@@ -25,34 +25,35 @@ class UserController extends Controller
         private readonly UserRepository $userRepository,
         private readonly CompanyRepository $companyRepo,
         private readonly UserRepository $userRepo,
-    
-    ){}
-    
+
+    ) {
+    }
+
     public function recent($limit)
     {
         $recentusers = $this->userService->getRecentUsers($limit);
-        
+
 
         foreach ($recentusers as $users) {
-           $refindusers[] = [
-            "id" => $users['id'],
-            "name" => $users["name"],
-            "email" => $users["email"]
-           ];
+            $refindusers[] = [
+                "id" => $users['id'],
+                "name" => $users["name"],
+                "email" => $users["email"]
+            ];
         }
 
-        return view('show', [ 'recentuser' => $recentusers ]);
+        return view('show', ['recentuser' => $recentusers]);
     }
 
-     public function find($id)
+    public function find($id)
     {
         $user = $this->userService->find($id);
 
-    
+
 
         //$user -> company_name = $this->companyRepo->getCompanyNameByUserId($id);
 
-       
+
 
         return view('userbyid', ['user' => $user]);
     }
@@ -62,7 +63,7 @@ class UserController extends Controller
      */
     public function create(Request $request, string $id)
     {
-    
+
     }
 
     /**
@@ -71,17 +72,19 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $userarray = [
-            'c_name' -> $request -> input('c_name'),
-            'name' -> $request->input('name'),
-            'email'-> $request->input('email'),
+            'c_name'->$request->input('c_name'),
+            'name'->$request->input('name'),
+            'email'->$request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'piclink' -> $request->input('piclink'), 
-            'tell' -> $request -> input('tell'),
-            'job_title' -> $request -> input('job_title')
+            'piclink'->$request->input('piclink'),
+            'tell'->$request->input('tell'),
+            'job_title'->$request->input('job_title')
         ];
 
         $this->userRepository->create($userarray);
-        
+
+        return redirect()->route('home')->with('success', 'User registered successfully!');
+
     }
 
     /**
@@ -95,11 +98,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-      public function edit(int $id)
+    public function edit(int $id)
     {
         $user = $this->userRepo->find($id);
 
-        return view('edit', compact('user')); 
+        return view('edit', compact('user'));
     }
 
     // Form feldolgozása
@@ -120,7 +123,7 @@ class UserController extends Controller
         $dataToUpdate = [
             'name' => $validated['name'],
             'email' => $validated['email'],
-            
+
         ];
 
         if (!empty($validated['password'])) {
@@ -132,9 +135,9 @@ class UserController extends Controller
         return redirect('/home')->with('success', 'User updated successfully!');
     }
 
-   
+
 }
 
 
-   
+
 

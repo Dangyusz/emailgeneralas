@@ -140,7 +140,7 @@ class UserController extends Controller
         $user = $this->userRepo->FindByEmail($request->input('email'));
 
         if (!$user) {
-            return redirect()->route('/forgot-password')->with('error', 'User not found.');
+            return redirect()->route('/forgot_password')->with('error', 'User not found.');
         }
 
         /*$user = $this->userRepo->find($id);*/
@@ -154,7 +154,7 @@ class UserController extends Controller
             'password' => bcrypt($validated['password']),
         ];
 
-        $this->userRepo->update($dataToUpdate, $id);
+        $this->userRepo->update($dataToUpdate, $user->id );
 
         return redirect('/UpPass ')->with('success', 'Password updated successfully!');
 

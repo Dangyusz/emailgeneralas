@@ -33,9 +33,9 @@
                                 Írja be e-mail címét, hogy megkapja a jelszó-visszaállítási linket.
                             </p>
                         </div>
-
-                        <form method="POST" action="{{ route('/UpPass/{id}',  ['id' => $user->id]) }}" class="form">
-                            @csrf
+                        @csrf
+                        @method('PUT')
+                        <form method="PUT" action="{{ route('forgot_password') }}" class="form">
 
                             <div class="input-group">
                                 <label for="email" class="input-label">E-mail cím</label>

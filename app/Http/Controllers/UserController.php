@@ -71,21 +71,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
 
         $userarray = [
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'c_name' => $request->input('c_name'),
-            'piclink' => $request->input('piclink'),
-            'tell' => $request->input('tell'),
-            'job_title' => $request->input('job_title')
+            'name' => $request->input('name'),
+            'email' => $request['email'],
+            'password' => Hash::make($request->input('password')),
+            'c_name' => $request->input('c_name') ?? 'test company',
+            'piclink' => $request->input('piclink') ?? 'testlink',
+            'tell' => $request->input('tell') ?? 'testtell',
+            'job_title' => $request->input('job_title') ??'testjob',
         ];
 
         $this->userRepository->create($userarray);

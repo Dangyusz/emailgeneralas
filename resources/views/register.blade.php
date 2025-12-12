@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<link rel="stylesheet" href="{{ asset('css/regstyle.css') }}">
 
 <head>
     <meta charset="utf-8">
@@ -12,12 +13,14 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+
+
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800" rel="stylesheet" />
 
     {{-- Preload footer background --}}
     <link rel="preload" as="image" href="https://cdn.hexaverse.hu/erasmus6.webp">
-    <link rel="stylesheet" href="public/css/style.css">
+
 
 
 </head>
@@ -36,20 +39,17 @@
                 <div class="input">
                     <div>
                         <label for="email" class="input-label">E-mail cím</label>
-                        <input type="email" name="email" class="form-control" placeholder="E-mail cím" required
-                            value="{{ 'email' }}">
+                        <input type="email" name="email" class="form-control" placeholder="E-mail cím" required>
                     </div>
 
                     <div>
                         <label for="username" class="input-label">Felhasználónév</label>
-                        <input type="text" name="name" class="form-control" placeholder="Felhasználónév" required
-                            value="{{ 'name' }}">
+                        <input type="text" name="name" class="form-control" placeholder="Felhasználónév" required>
                     </div>
 
                     <div>
                         <label for="password" class="input-label">Jelszó</label>
-                        <input type="password" name="password" class="form-control" placeholder="Jelszó" required
-                            value="{{ 'password' }}">
+                        <input type="password" name="password" class="form-control" placeholder="Jelszó" required>
                     </div>
 
                     <div>

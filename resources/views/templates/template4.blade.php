@@ -5,10 +5,10 @@
         position: relative;
     }
     .tpl-4 .inner-wrapper {
-        background: #ffffff url('https://cdn.hexaverse.hu/Group%202620.svg') right center / auto 185% no-repeat;
+        background: #ffffff url('https://cdn.hexaverse.hu/szurke.svg') right center / auto 185% no-repeat;
         border-radius: 20px;
         padding: 32px;
-        border: 3px solid #c77fdc;
+        border: 3px solid #696969ff;
         display: flex;
         gap: 32px;
         align-items: flex-start;
@@ -48,13 +48,13 @@
         align-items: flex-start;
         justify-content: space-between;
         gap: 16px;
-        border-bottom: 3px solid #ae2f94;
+        border-bottom: 3px solid #404040ff;
         padding-bottom: 8px;
     }
     .tpl-4 .name {
         font-family: 'ivypresto-display', Georgia, serif;
         font-size: 40px;
-        color: #99007A;
+        color: #404040ff;
         font-weight: 600;
         line-height: 1.2;
     }
@@ -76,14 +76,14 @@
     }
     .tpl-4 .details {
         font-size: 18px;
-        color: #d5a3e0;
+        color: #959595ff;
         line-height: 1.8;
     }
     .tpl-4 .details strong {
         color: #333;
     }
     .tpl-4 .details a {
-        color: #d5a3e0;
+        color: #959595ff;
         text-decoration: underline;
     }
     .tpl-4 .weblink {

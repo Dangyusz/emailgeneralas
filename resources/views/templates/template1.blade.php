@@ -5,7 +5,7 @@
         position: relative;
     }
     .tpl-1 .inner-wrapper {
-        background: #ffffff url('https://cdn.hexaverse.hu/Group%202620.svg') right center / auto 185% no-repeat;
+        background: #ffffff url('https://cdn.hexaverse.hu/rozsaszin.svg') right center / auto 185% no-repeat;
         border-radius: 20px;
         padding: 32px;
         border: 3px solid #c77fdc;

@@ -76,14 +76,14 @@
     }
     .tpl-2 .details {
         font-size: 18px;
-        color: #d5a3e0;
+        color: #c77fdc;
         line-height: 1.8;
     }
     .tpl-2 .details strong {
         color: #333;
     }
     .tpl-2 .details a {
-        color: #d5a3e0;
+        color: #c77fdc;
         text-decoration: underline;
     }
     .tpl-2 .weblink {

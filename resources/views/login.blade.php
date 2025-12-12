@@ -37,45 +37,50 @@
         <main class="main-content">
             <h1 class="page-title">Bejelentkezés</h1>
             <div class="content-placeholder">
-                <div class="mezők">
-                    <label for="form-label">Email-cím</label>
-                    <input type="email" name="email" class="form-control" placeholder="Email@example.com" required>
-                    @error('email')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                    {{-- A munkatársak ide dolgozhatnak --}}
-                </div>
-                <div class="mez">
 
-                    <label for="form-label">Jelszó <a class="pass" href="/forgot-password">Elfelejtett
-                            jelszó?</a></label>
+                <form method="POST" action="/login">
+                    @csrf
+                    <div class="mezők">
+                        <label for="form-label">Email-cím</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email@example.com"
+                            value="{{ old('email') }}" required>
+                        @error('email')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                        {{-- A munkatársak ide dolgozhatnak --}}
+                    </div>
+                    <div class="mez">
 
-                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-                        placeholder="Jelszó" required>
-                    <div class="kpozepremenobutton">
-                        <a href="/"><button>Tovább</button></a>
+                        <label for="form-label">Jelszó <a class="pass" href="/forgot-password">Elfelejtett
+                                jelszó?</a></label>
+
+                        <input type="password" name="password" class="form-control
+                       @error('password') is-invalid @enderror" placeholder="Jelszó" required>
+
+                        @error('password')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+
+                        <div class="kpozepremenobutton">
+                            <a type="submit"><button>Tovább</button></a>
+                        </div>
+
+
+
                     </div>
 
 
-                    @error('password')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
 
-
-
-                <div class="fiok">
-                    Nincs még fiókod?<a class="reg" href="/register"><b>Regisztrálj!</b></a></div>
+                    <div class="fiok">
+                        Nincs még fiókod?<a class="reg" href="/register"><b>Regisztrálj!</b></a></div>
 
             </div>
+            </form>
         </main>
 
         @include('components.footer')
     </div>
 </body>
 
-        @include('components.footer')
-    </div>
-</body>
 
 </html>

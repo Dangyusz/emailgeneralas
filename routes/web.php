@@ -45,9 +45,6 @@ Route::get('/account-settings', function () {
 })->name('account-settings');
 
 // Bejelentkezés
-Route::get('/login', function () {
-    return view('login');
-})->name('login')->middleware('guest');
 
 // Regisztráció
 Route::get('/register', function () {
@@ -64,11 +61,14 @@ Route::get('/account', function () {
     return view('account');
 })->name('account');
 
-Route::post('/store', [UserController::class,'store']);
+Route::post('/store', [UserController::class, 'store']);
+
+
+
+
 Route::view('/login', 'login')->middleware('guest')->name('login');
 
 Route::post('/login', LoginController::class)->middleware('guest');
-    
 
 
 

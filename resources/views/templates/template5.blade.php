@@ -5,10 +5,10 @@
         position: relative;
     }
     .tpl-5 .inner-wrapper {
-        background: #ffffff url('https://cdn.hexaverse.hu/Group%202620.svg') right center / auto 185% no-repeat;
+        background: #ffffff url('https://cdn.hexaverse.hu/kek.svg') right center / auto 185% no-repeat;
         border-radius: 20px;
         padding: 32px;
-        border: 3px solid #c77fdc;
+        border: 3px solid #7faadcff;
         display: flex;
         gap: 32px;
         align-items: flex-start;
@@ -48,13 +48,13 @@
         align-items: flex-start;
         justify-content: space-between;
         gap: 16px;
-        border-bottom: 3px solid #ae2f94;
+        border-bottom: 3px solid #2f88aeff;
         padding-bottom: 8px;
     }
     .tpl-5 .name {
         font-family: 'ivypresto-display', Georgia, serif;
         font-size: 40px;
-        color: #99007A;
+        color: #2f88aeff;
         font-weight: 600;
         line-height: 1.2;
     }
@@ -76,14 +76,14 @@
     }
     .tpl-5 .details {
         font-size: 18px;
-        color: #d5a3e0;
+        color: #287082ff;
         line-height: 1.8;
     }
     .tpl-5 .details strong {
         color: #333;
     }
     .tpl-5 .details a {
-        color: #d5a3e0;
+        color: #287082ff;
         text-decoration: underline;
     }
     .tpl-5 .weblink {

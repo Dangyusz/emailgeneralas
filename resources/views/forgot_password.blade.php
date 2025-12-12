@@ -1,79 +1,106 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="{{ str_replace(search: '_', replace: '-', subject: app()->getLocale()) }}">
+<link rel="stylesheet" href="forgstyle.css">
 
-        <title>Elfelejtett Jelszó - {{ config('app.name', 'AILFRAME') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="icon" href="/favicon.ico" sizes="any">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <title>Elfelejtett Jelszó - {{ config(key: 'app.name', default: 'MALFRAME') }}</title>
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800" rel="stylesheet" />
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-        {{-- Preload footer background --}}
-        <link rel="preload" as="image" href="https://cdn.hexaverse.hu/erasmus6.webp">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800" rel="stylesheet" />
 
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+    <link rel="preload" as="image" href="https://cdn.hexaverse.hu/erasmus6.webp">
+</head>
 
-            .page-wrapper {
-                background-color: #F1F9FF;
-                min-height: 100vh;
-                font-family: 'Inter', sans-serif;
-                display: flex;
-                flex-direction: column;
-            }
+<body>
+    <div class="page-wrapper">
+        @include('components.navbar')
 
-            .main-content {
-                flex: 1;
-                padding: 40px 24px;
-                max-width: 1200px;
-                margin: 0 auto;
-                width: 100%;
-            }
+        <main class="main-content2">
+            <div class="auth-container">
+                <div class="form-section">
+                    <div class="form-content-wrapper">
+                        <div class="form-header">
+                            <h1 class="form-title">Elfelejtett jelszó</h1>
+                            <p class="form-description">
+                                Írja be e-mail címét, hogy megkapja a jelszó-visszaállítási linket.
+                            </p>
+                        </div>
 
-            .page-title {
-                font-size: 32px;
-                font-weight: 700;
-                color: #322799;
-                margin-bottom: 24px;
-            }
+                        @if (session('success'))
+                            <div
+                                style="padding: 1rem; margin-bottom: 1rem; background-color: #d4edda; color: #155724; border-radius: 0.25rem;">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
-            .content-placeholder {
-                background: white;
-                border-radius: 12px;
-                padding: 40px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-                min-height: 400px;
-            }
+                        @if (session('error'))
+                            <div
+                                style="padding: 1rem; margin-bottom: 1rem; background-color: #f8d7da; color: #721c24; border-radius: 0.25rem;">
+                                {{ session('error') }}
+                            </div>
+                        @endif
 
-            .content-placeholder p {
-                color: #666;
-                font-size: 16px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="page-wrapper">
-            @include('components.navbar')
-            
-            <main class="main-content">
-                <h1 class="page-title">Elfelejtett Jelszó</h1>
-                <div class="content-placeholder">
-                    <p>Itt a jelszó visszaállítási űrlap fog megjelenni.</p>
-                    {{-- A munkatársak ide dolgozhatnak --}}
+                        @if ($errors->any())
+                            <div
+                                style="padding: 1rem; margin-bottom: 1rem; background-color: #f8d7da; color: #721c24; border-radius: 0.25rem;">
+                                <ul style="margin: 0; padding-left: 1.25rem;">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('updatepassword') }}" class="form">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="input-group">
+                                <label for="email" class="input-label">E-mail cím</label>
+                                <input id="email" type="email" name="email" value="{{ old('email') }}"
+                                    autocomplete="email" autofocus placeholder="email@példa.com" class="input-field"
+                                    required />
+                            </div>
+
+                            <div class="input-group">
+                                <label for="password" class="input-label">Új jelszó</label>
+                                <input id="password" type="password" name="password" value="{{ old('password') }}"
+                                    autofocus placeholder="új jelszó" class="input-field" required />
+                            </div>
+
+                            <div class="button-group">
+                                <button type="submit" class="submit-button">
+                                    jelszó átállitása
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="lab-links">
+                            <span class="footer-text">Vagy térjen vissza a </span>
+                            <a href="{{ route('login') }}" class="login-link">bejelentkezéshez</a>
+                        </div>
+                    </div>
                 </div>
-            </main>
 
-            @include('components.footer')
-        </div>
-    </body>
+                <div class="brand-section">
+                    <div class="brand-content">
+                        <img style="height: 225px" width="auto" src="https://cdn.hexaverse.hu/erasmus7.webp" alt="">
+                        <h2 class="brand-name">MAILFRAME</h2>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        @include('components.footer')
+    </div>
+</body>
+
 </html>

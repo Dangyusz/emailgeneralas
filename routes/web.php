@@ -19,7 +19,7 @@ Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
 
 Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
 
-Route::put('/UpPass/{id}', [UserController::class, 'updatepassword'])->name('updatepassword');
+
 
 
 // Főoldal
@@ -49,10 +49,7 @@ Route::get('/register', function () {
     return view('register');
 })->name('register')->middleware('guest');
 
-// Elfelejtett jelszó
-Route::get('/forgot-password', function () {
-    return view('forgot_password');
-})->name('password.request')->middleware('guest');
+
 
 // Fiók
 Route::get('/account/{id}', [UserController::class, 'find']);
@@ -76,6 +73,19 @@ Route::post('/store', [UserController::class, 'store']);
 Route::view('/login', 'login')->middleware('guest')->name('login');
 
 Route::post('/login', LoginController::class)->middleware('guest');
+
+
+
+
+Route::get('/forgot_password', function () {
+    return view('forgot_password');
+})->name('forgot_password');
+
+
+Route::put('/forgot_password', [UserController::class, 'updatepassword'])->name('updatepassword');
+
+
+    
 
 
 
